@@ -1,0 +1,16 @@
+{
+  "today": "Bugün",
+  "tomorrow": "Yarın",
+  "days": {
+    "0": "Pazar",
+    "1": "Pazartesi",
+    "2": "Salı",
+    "3": "Çarşamba",
+    "4": "Perşembe",
+    "5": "Cuma",
+    "6": "Cumartesi"
+  },
+  "language": "Dil",
+  "settings": "Ayarlar",
+  "fullDayForecast": "Tam Gün tahminini görüntüle"
+}

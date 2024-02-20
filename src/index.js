@@ -1,4 +1,6 @@
-import "./style.css";
 import "./tailwind.css";
-
-// index.js
+import "./style.css";
+import "./additional.css";
+import "./modules/handleApi";
+import "./modules/generalUI";
+import "./modules/language";
