@@ -17,7 +17,7 @@
       >
         <div
           id="current-info-temp"
-          class="grid grid-rows-2 xs:grid-rows-1 xs:grid-cols-2 lg:gap-x-32 lg:border-b-2 lg:border-black lg:col-start-1 lg:col-end-7"
+          class="grid grid-rows-2 xs:grid-rows-1 xs:grid-cols-2 lg:gap-x-32 lg:border-b-2 lg:border-black lg:col-start-1 lg:col-end-7 select-none"
         >
           <div
             id="today-weather"
@@ -72,7 +72,7 @@
         <!--! Şehir ismi detayları -->
         <div
           id="current-info-city"
-          class="grid xs:mt-4 text-2xl md:text-3xl lg:row-start-2 lg:col-start-3 lg:col-end-5"
+          class="grid select-none xs:mt-4 text-2xl md:text-3xl lg:row-start-2 lg:col-start-3 lg:col-end-5"
         >
           <div id="city-name" class="">
             Istanbul
@@ -109,12 +109,12 @@
 
       <div
         id="hours-info"
-        class="grid grid-cols-3 grid-rows-3 gap-y-8 lg:gap-x-4 lg:place-items-center md:text-xl"
+        class="grid grid-cols-3 grid-rows-3 gap-y-8 lg:gap-x-4 lg:place-items-center md:text-xl select-none"
       >
         <button
           type="button"
           data-box="1"
-          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-end lg:select-none"
+          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-end"
         >
           <div class="">9<span class="" data-temp-sign="°C">°C</span></div>
           <div class="">
@@ -148,7 +148,8 @@
             <span data-condition-text="7">Parçalı bulutlu</span>
           </div>
         </button>
-        <div
+        <button
+          type="button"
           data-box="2"
           class="border-t-2 border-b-2 lg:border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1"
         >
@@ -181,8 +182,9 @@
             <span data-hour="8">08:00</span>
           </div>
           <div class="hidden lg:block lg:text-center">Parçalı bulutlu</div>
-        </div>
-        <div
+        </button>
+        <button
+          type="button"
           data-box="3"
           class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-start"
         >
@@ -215,8 +217,9 @@
             <span data-hour="8">08:00</span>
           </div>
           <div class="hidden lg:block lg:text-center">Parçalı bulutlu</div>
-        </div>
-        <div
+        </button>
+        <button
+          type="button"
           data-box="4"
           class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-end"
         >
@@ -249,8 +252,9 @@
             <span data-hour="8">08:00</span>
           </div>
           <div class="hidden lg:block lg:text-center">Parçalı bulutlu</div>
-        </div>
-        <div
+        </button>
+        <button
+          type="button"
           data-box="5"
           class="border-t-2 border-b-2 lg:border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1"
         >
@@ -283,8 +287,9 @@
             <span data-hour="8">08:00</span>
           </div>
           <div class="hidden lg:block lg:text-center">Parçalı bulutlu</div>
-        </div>
-        <div
+        </button>
+        <button
+          type="button"
           data-box="6"
           class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-start"
         >
@@ -317,8 +322,9 @@
             <span data-hour="8">08:00</span>
           </div>
           <div class="hidden lg:block lg:text-center">Parçalı bulutlu</div>
-        </div>
-        <div
+        </button>
+        <button
+          type="button"
           data-box="7"
           class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-end"
         >
@@ -351,8 +357,9 @@
             <span data-hour="8">08:00</span>
           </div>
           <div class="hidden lg:block lg:text-center">Parçalı bulutlu</div>
-        </div>
-        <div
+        </button>
+        <button
+          type="button"
           data-box="8"
           class="border-t-2 border-b-2 lg:border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1"
         >
@@ -385,10 +392,11 @@
             <span data-hour="8">08:00</span>
           </div>
           <div class="hidden lg:block lg:text-center">Parçalı bulutlu</div>
-        </div>
-        <div
+        </button>
+        <button
+          type="button"
           data-box="9"
-          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-start"
+          class="select-none border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-start"
         >
           <div class="">9<span class="" data-temp-sign="°C">°C</span></div>
           <div class="">
@@ -419,18 +427,84 @@
             <span data-hour="8">08:00</span>
           </div>
           <div class="hidden lg:block lg:text-center">Parçalı bulutlu</div>
+        </button>
+      </div>
+
+      <div
+        id="mobile-nav"
+        class="lg:hidden fixed bottom-0 left-0 w-full h-16 border-t-2 border-black flex items-center justify-center gap-4 xs:gap-5 sm:gap-8"
+      >
+        <div
+          id="theme-mobile"
+          class="bg-[#2d3748] w-12 h-12 flex items-center justify-center rounded-lg"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="#f7fafc"
+            class="h-8 sm:h-9"
+          >
+            <path
+              d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"
+            />
+          </svg>
+        </div>
+        <div
+          id="search-mobile"
+          class="w-12 h-12 flex items-center justify-center rounded-lg border-2 border-black"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="h-8 sm:h-9"
+          >
+            <path
+              d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"
+            />
+          </svg>
+        </div>
+        <div
+          id="settings-mobile"
+          class="w-12 h-12 flex items-center justify-center rounded-lg border-2 border-black"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="h-8 sm:h-9"
+          >
+            <title>Settings</title>
+            <path
+              d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z"
+            />
+          </svg>
         </div>
       </div>
+      <div
+        id="modal-dark"
+        class="absolute top-0 left-0 h-full w-full bg-neutral-900 opacity-50 z-10 transition-opacity invisible"
+      ></div>
+      <button
+        type="button"
+        id="desktop-settings"
+        class="hidden lg:flex items-center gap-2 absolute bottom-4 right-4 text-xl"
+      >
+        Settings
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          class="w-16"
+        >
+          <title>cog-box</title>
+          <path
+            d="M17.25,12C17.25,12.23 17.23,12.46 17.2,12.68L18.68,13.84C18.81,13.95 18.85,14.13 18.76,14.29L17.36,16.71C17.27,16.86 17.09,16.92 16.93,16.86L15.19,16.16C14.83,16.44 14.43,16.67 14,16.85L13.75,18.7C13.72,18.87 13.57,19 13.4,19H10.6C10.43,19 10.28,18.87 10.25,18.7L10,16.85C9.56,16.67 9.17,16.44 8.81,16.16L7.07,16.86C6.91,16.92 6.73,16.86 6.64,16.71L5.24,14.29C5.15,14.13 5.19,13.95 5.32,13.84L6.8,12.68C6.77,12.46 6.75,12.23 6.75,12C6.75,11.77 6.77,11.54 6.8,11.32L5.32,10.16C5.19,10.05 5.15,9.86 5.24,9.71L6.64,7.29C6.73,7.13 6.91,7.07 7.07,7.13L8.81,7.84C9.17,7.56 9.56,7.32 10,7.15L10.25,5.29C10.28,5.13 10.43,5 10.6,5H13.4C13.57,5 13.72,5.13 13.75,5.29L14,7.15C14.43,7.32 14.83,7.56 15.19,7.84L16.93,7.13C17.09,7.07 17.27,7.13 17.36,7.29L18.76,9.71C18.85,9.86 18.81,10.05 18.68,10.16L17.2,11.32C17.23,11.54 17.25,11.77 17.25,12M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M12,10C10.89,10 10,10.89 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12C14,10.89 13.1,10 12,10Z"
+          />
+        </svg>
+      </button>
 
-      <div id="mobile-nav" class="lg:hidden">
-        <div id="theme-mobile" class=""></div>
-        <div id="search-mobile" class=""></div>
-        <div id="settings-mobile" class=""></div>
-      </div>
-
-      <div id="desktop-settings"></div>
-      <div id="modal-dark"></div>
-      <div id="modal-menu"></div>
+      <div
+        id="mobile-settings"
+        class="hidden absolute top-0 right-0 h-full bg-white w-full xs:w-2/4 z-20 transition-transform md:w-72"
+      ></div>
     </div>
     <!-- Switch for enabling ambient sounds -->
     <!--    <div class="form-check form-switch">
