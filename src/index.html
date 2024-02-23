@@ -17,7 +17,7 @@
       >
         <div
           id="current-info-temp"
-          class="grid grid-rows-2 xs:grid-rows-1 xs:grid-cols-2 lg:gap-x-32 lg:border-b-2 lg:border-black lg:col-start-1 lg:col-end-7 select-none"
+          class="grid grid-rows-2 xs:grid-rows-1 xs:grid-cols-2 lg:gap-x-32 lg:border-b-2 lg:border-black lg:col-start-1 lg:col-end-7 select-none cursor-pointer"
         >
           <div
             id="today-weather"
@@ -28,10 +28,10 @@
               class="grid grid-cols-1 grid-rows-1 lg:grid-cols-2 lg:gap-x-2 xl:gap-8 2xl:gap-x-16"
             >
               <div class="text-3xl flex xs:items-center xs:justify-center">
-                12<span class="" data-temp-sign="°C">°C</span>
+                12<span data-temp-sign="°C">°C</span>
               </div>
               <span class="w-24 h-[3px] bg-black rounded-xl lg:hidden"></span>
-              <div class="text-2xl mt-1 xs:text-3xl">Bulutlu</div>
+              <div class="text-2xl mt-1 xs:text-3xl" data-language>Bulutlu</div>
             </div>
             <svg
               class="w-20 xs:w-16 lg:min-w-16 place-self-center xs:place-self-auto"
@@ -64,8 +64,12 @@
               id="feels-like"
               class="text-xl md:text-2xl -order-1 xs:order-2 lg:-order-1 xs:justify-self-end lg:text-center"
             >
-              <span id="feels-like-text">feels like:</span>
-              <span id="feels-like-degree">7°C</span>
+              <span id="feels-like-text" data-language-text="feelsLike"
+                >feels like:</span
+              >
+              <span id="feels-like-degree"
+                >7<span data-temp-sign="°C">°C</span></span
+              >
             </div>
           </div>
         </div>
@@ -74,7 +78,7 @@
           id="current-info-city"
           class="grid select-none xs:mt-4 text-2xl md:text-3xl lg:row-start-2 lg:col-start-3 lg:col-end-5"
         >
-          <div id="city-name" class="">
+          <div id="city-name">
             Istanbul
             <span id="country-name" class="text-xl xs:self-end md:text-2xl">
               Turkey
@@ -86,7 +90,12 @@
           class="hidden lg:grid lg:col-start-5 lg:col-end-6 lg:self-center h-0 lg:w-52"
         >
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="City Name" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="City Name"
+              data-language-text="CityName"
+            />
             <button
               class="btn btn-primary flex items-center justify-center"
               type="button"
@@ -109,15 +118,38 @@
 
       <div
         id="hours-info"
-        class="grid grid-cols-3 grid-rows-3 gap-y-8 lg:gap-x-4 lg:place-items-center md:text-xl select-none"
+        class="grid grid-cols-3 grid-rows-4 gap-y-8 lg:gap-x-4 lg:place-items-center md:text-xl select-none"
       >
+        <div
+          class="col-start-1 col-end-4 row-start-4 hidden lg:grid -mt-16 w-full xl:max-w-[87%] 2xl:max-w-[80%] h-full grid-cols-3"
+        >
+          <button id="forecast-today" class="col-start-1 col-end-2">
+            <div data-language-text="viewForecast" class="break-words">
+              Tam gün Hava tahminini görüntüle
+            </div>
+            <div class="font-bold">Bugün</div>
+          </button>
+          <button id="forecast-tomorrow" class="col-start-2 col-end-3">
+            <div data-language-text="viewForecast">
+              Tam gün Hava tahminini görüntüle
+            </div>
+            <div class="text-blue-500 font-bold">Yarın</div>
+          </button>
+          <button id="forecast-next" class="col-start-3 col-end-4">
+            <div class="" data-language-text="viewForecast">
+              View Full Day Forecast
+            </div>
+            <div class="text-amber-600 font-bold">Sunday</div>
+          </button>
+        </div>
+
         <button
           type="button"
           data-box="1"
-          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-end"
+          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-end shadow-sm active:shadow active:shadow-black shadow-black"
         >
-          <div class="">9<span class="" data-temp-sign="°C">°C</span></div>
-          <div class="">
+          <div>9<span data-temp-sign="°C">°C</span></div>
+          <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -151,10 +183,10 @@
         <button
           type="button"
           data-box="2"
-          class="border-t-2 border-b-2 lg:border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1"
+          class="border-t-2 border-b-2 lg:border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 shadow-sm active:shadow active:shadow-black shadow-black"
         >
-          <div class="">9<span class="" data-temp-sign="°C">°C</span></div>
-          <div class="">
+          <div>9<span data-temp-sign="°C">°C</span></div>
+          <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -186,10 +218,10 @@
         <button
           type="button"
           data-box="3"
-          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-start"
+          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-start shadow-sm active:shadow active:shadow-black shadow-black"
         >
-          <div class="">9<span class="" data-temp-sign="°C">°C</span></div>
-          <div class="">
+          <div>9<span data-temp-sign="°C">°C</span></div>
+          <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -221,10 +253,10 @@
         <button
           type="button"
           data-box="4"
-          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-end"
+          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-end shadow-sm active:shadow active:shadow-black shadow-black"
         >
-          <div class="">9<span class="" data-temp-sign="°C">°C</span></div>
-          <div class="">
+          <div>9<span data-temp-sign="°C">°C</span></div>
+          <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -256,10 +288,10 @@
         <button
           type="button"
           data-box="5"
-          class="border-t-2 border-b-2 lg:border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1"
+          class="border-t-2 border-b-2 lg:border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 shadow-sm active:shadow active:shadow-black shadow-black"
         >
-          <div class="">9<span class="" data-temp-sign="°C">°C</span></div>
-          <div class="">
+          <div>9<span data-temp-sign="°C">°C</span></div>
+          <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -291,10 +323,10 @@
         <button
           type="button"
           data-box="6"
-          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-start"
+          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-start shadow-sm active:shadow active:shadow-black shadow-black"
         >
-          <div class="">9<span class="" data-temp-sign="°C">°C</span></div>
-          <div class="">
+          <div>9<span data-temp-sign="°C">°C</span></div>
+          <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -326,10 +358,10 @@
         <button
           type="button"
           data-box="7"
-          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-end"
+          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-end shadow-sm active:shadow active:shadow-black shadow-black"
         >
-          <div class="">9<span class="" data-temp-sign="°C">°C</span></div>
-          <div class="">
+          <div>9<span data-temp-sign="°C">°C</span></div>
+          <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -361,10 +393,10 @@
         <button
           type="button"
           data-box="8"
-          class="border-t-2 border-b-2 lg:border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1"
+          class="border-t-2 border-b-2 lg:border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 shadow-sm active:shadow active:shadow-black shadow-black"
         >
-          <div class="">9<span class="" data-temp-sign="°C">°C</span></div>
-          <div class="">
+          <div>9<span data-temp-sign="°C">°C</span></div>
+          <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -396,10 +428,10 @@
         <button
           type="button"
           data-box="9"
-          class="select-none border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-start"
+          class="select-none border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-start shadow-sm active:shadow active:shadow-black shadow-black"
         >
-          <div class="">9<span class="" data-temp-sign="°C">°C</span></div>
-          <div class="">
+          <div>9<span data-temp-sign="°C">°C</span></div>
+          <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -431,12 +463,67 @@
       </div>
 
       <div
+        id="modal-dark"
+        class="fixed invisible top-0 left-0 h-full w-full bg-neutral-900 opacity-50 z-10 transition-opacity select-none"
+      ></div>
+      <!-- Dynamic modal for detailed weaher info -->
+      <div
+        id="expand-modal"
+        class="fixed invisible top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 w-full xs:w-80 sm:w-96 lg:w-[450px] lg:h-[450px] h-96 bg-white z-30 rounded border-2 border-black select-none"
+      ></div>
+
+      <div
+        id="menu-desktop"
+        class="hidden lg:block fixed top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 lg:w-[450px] lg:h-[450px] bg-white z-30 invisible opacity-0 transition-opacity rounded border-2 border-black select-none"
+      ></div>
+      <button
+        type="button"
+        id="settings-desktop"
+        class="hidden lg:flex items-center gap-2 fixed bottom-4 right-4 text-xl select-none"
+      >
+        Settings
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          class="w-16"
+        >
+          <title>Settings</title>
+          <path
+            d="M 17.25 12 M 19 3 H 5 C 3.89 3 3 3.89 3 5 V 19 A 2 2 0 0 0 5 21 H 19 A 2 2 0 0 0 21 19 V 5 C 21 3.89 20.1 3 19 3 Z"
+          />
+          <path
+            class="fill-white"
+            d="M 17.25 12 C 17.25 12.23 17.23 12.46 17.2 12.68 L 18.68 13.84 C 18.81 13.95 18.85 14.13 18.76 14.29 L 17.36 16.71 C 17.27 16.86 17.09 16.92 16.93 16.86 L 15.19 16.16 C 14.83 16.44 14.43 16.67 14 16.85 L 13.75 18.7 C 13.72 18.87 13.57 19 13.4 19 H 10.6 C 10.43 19 10.28 18.87 10.25 18.7 L 10 16.85 C 9.56 16.67 9.17 16.44 8.81 16.16 L 7.07 16.86 C 6.91 16.92 6.73 16.86 6.64 16.71 L 5.24 14.29 C 5.15 14.13 5.19 13.95 5.32 13.84 L 6.8 12.68 C 6.77 12.46 6.75 12.23 6.75 12 C 6.75 11.77 6.77 11.54 6.8 11.32 L 5.32 10.16 C 5.19 10.05 5.15 9.86 5.24 9.71 L 6.64 7.29 C 6.73 7.13 6.91 7.07 7.07 7.13 L 8.81 7.84 C 9.17 7.56 9.56 7.32 10 7.15 L 10.25 5.29 C 10.28 5.13 10.43 5 10.6 5 H 13.4 C 13.57 5 13.72 5.13 13.75 5.29 L 14 7.15 C 14.43 7.32 14.83 7.56 15.19 7.84 L 16.93 7.13 C 17.09 7.07 17.27 7.13 17.36 7.29 L 18.76 9.71 C 18.85 9.86 18.81 10.05 18.68 10.16 L 17.2 11.32 C 17.23 11.54 17.25 11.77 17.25 12 H 17 M 12 10 C 10.89 10 10 10.89 10 12 A 2 2 0 0 0 12 14 A 2 2 0 0 0 14 12 C 14 10.89 13.1 10 12 10 Z"
+          />
+        </svg>
+      </button>
+
+      <div
+        id="menu-mobile"
+        class="lg:hidden bg-white h-full w-full xs:w-60 sm:w-80 fixed top-0 right-0 translate-x-full transition-transform z-20 xs:border-l-2 border-black"
+      >
+        <div class="relative w-full h-full border">
+          <button id="close-menu-mobile" class="absolute top-2 left-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              class="w-10"
+            >
+              <title>Close Tab</title>
+              <path
+                d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div
         id="mobile-nav"
         class="lg:hidden fixed bottom-0 left-0 w-full h-16 border-t-2 border-black flex items-center justify-center gap-4 xs:gap-5 sm:gap-8"
       >
         <div
           id="theme-mobile"
-          class="bg-[#2d3748] w-12 h-12 flex items-center justify-center rounded-lg"
+          class="bg-[#2d3748] w-12 h-12 flex items-center justify-center rounded-lg shadow-xl shadow-gray-300"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -451,7 +538,7 @@
         </div>
         <div
           id="search-mobile"
-          class="w-12 h-12 flex items-center justify-center rounded-lg border-2 border-black"
+          class="w-12 h-12 flex items-center justify-center rounded-lg border border-black shadow shadow-black active:scale-90 transition-transform"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -465,7 +552,7 @@
         </div>
         <div
           id="settings-mobile"
-          class="w-12 h-12 flex items-center justify-center rounded-lg border-2 border-black"
+          class="w-12 h-12 flex items-center justify-center rounded-lg border border-black shadow shadow-black active:scale-90 transition-transform"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -479,33 +566,8 @@
           </svg>
         </div>
       </div>
-      <div
-        id="modal-dark"
-        class="absolute top-0 left-0 h-full w-full bg-neutral-900 opacity-50 z-10 transition-opacity invisible"
-      ></div>
-      <button
-        type="button"
-        id="desktop-settings"
-        class="hidden lg:flex items-center gap-2 absolute bottom-4 right-4 text-xl"
-      >
-        Settings
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          class="w-16"
-        >
-          <title>cog-box</title>
-          <path
-            d="M17.25,12C17.25,12.23 17.23,12.46 17.2,12.68L18.68,13.84C18.81,13.95 18.85,14.13 18.76,14.29L17.36,16.71C17.27,16.86 17.09,16.92 16.93,16.86L15.19,16.16C14.83,16.44 14.43,16.67 14,16.85L13.75,18.7C13.72,18.87 13.57,19 13.4,19H10.6C10.43,19 10.28,18.87 10.25,18.7L10,16.85C9.56,16.67 9.17,16.44 8.81,16.16L7.07,16.86C6.91,16.92 6.73,16.86 6.64,16.71L5.24,14.29C5.15,14.13 5.19,13.95 5.32,13.84L6.8,12.68C6.77,12.46 6.75,12.23 6.75,12C6.75,11.77 6.77,11.54 6.8,11.32L5.32,10.16C5.19,10.05 5.15,9.86 5.24,9.71L6.64,7.29C6.73,7.13 6.91,7.07 7.07,7.13L8.81,7.84C9.17,7.56 9.56,7.32 10,7.15L10.25,5.29C10.28,5.13 10.43,5 10.6,5H13.4C13.57,5 13.72,5.13 13.75,5.29L14,7.15C14.43,7.32 14.83,7.56 15.19,7.84L16.93,7.13C17.09,7.07 17.27,7.13 17.36,7.29L18.76,9.71C18.85,9.86 18.81,10.05 18.68,10.16L17.2,11.32C17.23,11.54 17.25,11.77 17.25,12M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M12,10C10.89,10 10,10.89 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12C14,10.89 13.1,10 12,10Z"
-          />
-        </svg>
-      </button>
-
-      <div
-        id="mobile-settings"
-        class="hidden absolute top-0 right-0 h-full bg-white w-full xs:w-2/4 z-20 transition-transform md:w-72"
-      ></div>
     </div>
+
     <!-- Switch for enabling ambient sounds -->
     <!--    <div class="form-check form-switch">
       <input class="form-check-input" type="checkbox" />
