@@ -2,7 +2,7 @@ import * as ui from "./modalDark";
 
 const mobileMenu = document.getElementById("menu-mobile");
 const closeMenuButton = document.getElementById("close-menu-mobile");
-const settingsButton = document.getElementById("settings-mobile");
+const settingsButton = document.getElementById("settings-button-mobile");
 const { modalDark } = ui;
 function showMobileMenu() {
   mobileMenu.classList.remove("translate-x-full");

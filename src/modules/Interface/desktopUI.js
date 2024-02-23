@@ -1,6 +1,6 @@
 import * as ui from "./modalDark";
 
-const desktopSettings = document.getElementById("settings-desktop");
+const desktopSettings = document.getElementById("settings-button-desktop");
 const desktopMenu = document.getElementById("menu-desktop");
 const { modalDark } = ui;
 
