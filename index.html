@@ -120,33 +120,42 @@
         id="hours-info"
         class="grid grid-cols-3 grid-rows-4 gap-y-8 lg:gap-x-4 lg:place-items-center md:text-xl select-none"
       >
-        <div
+        <!--       <div
           class="col-start-1 col-end-4 row-start-4 hidden lg:grid -mt-16 w-full xl:max-w-[87%] 2xl:max-w-[80%] h-full grid-cols-3"
+        > -->
+        <button
+          id="forecast-today"
+          class="col-start-1 col-end-2 hidden lg:block"
         >
-          <button id="forecast-today" class="col-start-1 col-end-2">
-            <div data-language-text="viewForecast" class="break-words">
-              Tam gün Hava tahminini görüntüle
-            </div>
-            <div class="font-bold">Bugün</div>
-          </button>
-          <button id="forecast-tomorrow" class="col-start-2 col-end-3">
-            <div data-language-text="viewForecast">
-              Tam gün Hava tahminini görüntüle
-            </div>
-            <div class="text-blue-500 font-bold">Yarın</div>
-          </button>
-          <button id="forecast-next" class="col-start-3 col-end-4">
-            <div class="" data-language-text="viewForecast">
-              View Full Day Forecast
-            </div>
-            <div class="text-amber-600 font-bold">Sunday</div>
-          </button>
-        </div>
+          <div data-language-text="viewForecast" class="">
+            Tam gün Hava tahminini görüntüle
+          </div>
+          <div class="font-bold">Bugün</div>
+        </button>
+        <button
+          id="forecast-tomorrow"
+          class="col-start-2 col-end-3 hidden lg:block"
+        >
+          <div data-language-text="viewForecast">
+            Tam gün Hava tahminini görüntüle
+          </div>
+          <div class="text-blue-500 font-bold">Yarın</div>
+        </button>
+        <button
+          id="forecast-next"
+          class="col-start-3 col-end-4 hidden lg:block"
+        >
+          <div class="" data-language-text="viewForecast">
+            View Full Day Forecast
+          </div>
+          <div class="text-amber-600 font-bold">Sunday</div>
+        </button>
+        <!--   </div> -->
 
         <button
           type="button"
           data-box="1"
-          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-end shadow-sm active:shadow active:shadow-black shadow-black"
+          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 shadow-sm active:shadow active:shadow-black shadow-black"
         >
           <div>9<span data-temp-sign="°C">°C</span></div>
           <div>
@@ -218,7 +227,7 @@
         <button
           type="button"
           data-box="3"
-          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-start shadow-sm active:shadow active:shadow-black shadow-black"
+          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 shadow-sm active:shadow active:shadow-black shadow-black"
         >
           <div>9<span data-temp-sign="°C">°C</span></div>
           <div>
@@ -253,7 +262,7 @@
         <button
           type="button"
           data-box="4"
-          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-end shadow-sm active:shadow active:shadow-black shadow-black"
+          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 shadow-sm active:shadow active:shadow-black shadow-black"
         >
           <div>9<span data-temp-sign="°C">°C</span></div>
           <div>
@@ -323,7 +332,7 @@
         <button
           type="button"
           data-box="6"
-          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-start shadow-sm active:shadow active:shadow-black shadow-black"
+          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 shadow-sm active:shadow active:shadow-black shadow-black"
         >
           <div>9<span data-temp-sign="°C">°C</span></div>
           <div>
@@ -358,7 +367,7 @@
         <button
           type="button"
           data-box="7"
-          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-end shadow-sm active:shadow active:shadow-black shadow-black"
+          class="border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 shadow-sm active:shadow active:shadow-black shadow-black"
         >
           <div>9<span data-temp-sign="°C">°C</span></div>
           <div>
@@ -428,7 +437,7 @@
         <button
           type="button"
           data-box="9"
-          class="select-none border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 lg:place-self-start shadow-sm active:shadow active:shadow-black shadow-black"
+          class="select-none border-2 border-[#2d3748] grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 shadow-sm active:shadow active:shadow-black shadow-black"
         >
           <div>9<span data-temp-sign="°C">°C</span></div>
           <div>
@@ -464,21 +473,124 @@
 
       <div
         id="modal-dark"
-        class="fixed invisible top-0 left-0 h-full w-full bg-neutral-900 opacity-50 z-10 transition-opacity select-none"
+        class="fixed top-0 left-0 h-full w-full bg-neutral-900 opacity-50 z-10 transition-opacity select-none"
       ></div>
       <!-- Dynamic modal for detailed weaher info -->
       <div
         id="expand-modal"
-        class="fixed invisible top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 w-full xs:w-80 sm:w-96 lg:w-[450px] lg:h-[450px] h-96 bg-white z-30 rounded border-2 border-black select-none"
-      ></div>
+        class="fixed invisible top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 w-full xs:w-[22rem] sm:w-96 lg:w-[450px] lg:h-[450px] h-96 bg-white z-30 rounded border-2 border-black select-none grid grid-cols-2"
+      >
+        <div
+          class="flex flex-col items-center mt-4 mb-4 ml-1 gap-8 lg:gap-16 text-center"
+        >
+          <div class="text-2xl lg:text-4xl">10:00</div>
+          <div class="text-2xl lg:text-3xl">
+            <span data-language-text="cloud">Cloud</span>:
+            <span data-cloud>75%</span>
+          </div>
+          <div class="text-2xl lg:text-3xl">
+            <span data-language-text="humidity">Humidity</span>:
+            <span data-humidity>81%</span>
+          </div>
+          <div class="text-2xl lg:text-3xl">
+            <span data-language-text="wind">Wind</span>:
+            <span data-humidity>18</span> km/h
+          </div>
+        </div>
+        <div class="grid grid-rows-2 place-items-center text-center">
+          <div class="">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+              class="w-20"
+            >
+              <path
+                d="M384.8 271.4a80 80 0 10-123.55-92M464 208h32M336 48v32M222.86 94.86l22.63 22.63M449.14 94.86l-22.63 22.63"
+                fill="none"
+                stroke="#eab308"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="32"
+              />
+              <path
+                d="M90.61 306.85A16.07 16.07 0 00104 293.6C116.09 220.17 169.63 176 232 176c57.93 0 96.62 37.75 112.2 77.74a15.84 15.84 0 0012.2 9.87c50 8.15 91.6 41.54 91.6 99.59 0 59.4-48.6 100.8-108 100.8H106c-49.5 0-90-24.7-90-79.2 0-48.47 38.67-72.22 74.61-77.95z"
+                fill="none"
+                stroke="#cbd5e1"
+                stroke-linejoin="round"
+                stroke-width="32"
+              />
+            </svg>
+          </div>
+          <div
+            class="text-3xl place-self-start lg:text-4xl"
+            data-condition-pop
+            data-language
+          >
+            Partly Cloudy
+          </div>
+        </div>
+      </div>
 
       <div
         id="menu-desktop"
-        class="hidden lg:block fixed top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 lg:w-[450px] lg:h-[450px] bg-white z-30 invisible opacity-0 transition-opacity rounded border-2 border-black select-none"
-      ></div>
+        class="hidden fixed top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 lg:w-[450px] lg:h-[450px] bg-white z-30 transition-opacity rounded border-2 border-black select-none lg:grid grid-rows-2"
+      >
+        <div class="flex flex-col items-center gap-4 p-2">
+          <div id="language-holder" class="text-3xl border-2 border-black p-3">
+            Language
+          </div>
+          <select
+            id="language-selection-desktop"
+            class="text-2xl p-2 bg-none border-black border"
+          >
+            <option value="en" selected>English</option>
+            <option value="tr">Türkçe</option>
+            <option value="ru">русский</option>
+            <option value="de">Deutsch</option>
+          </select>
+        </div>
+        <div class="border-t-2 border-black grid grid-cols-2 grid-rows-2">
+          <div class="text-4xl justify-self-center place-self-center">
+            Theme
+          </div>
+          <div class="justify-self-center flex flex-col gap-4">
+            <span class="border-b-2 border-black text-4xl text-center"
+              >Unit</span
+            >
+            <div class="text-3xl">
+              <button>°C</button> | <button>°F</button>
+            </div>
+          </div>
+          <button class="self-center ml-4 flex gap-4 items-center text-4xl">
+            <div
+              class="bg-[#2d3748] w-16 h-16 flex items-center justify-center rounded-lg shadow shadow-black"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="#f7fafc"
+                class="h-8 sm:h-9"
+              >
+                <path
+                  d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"
+                />
+              </svg>
+            </div>
+            <span data-language-text="dark">Dark</span>
+          </button>
+          <div class="place-self-center">
+            <button
+              type="button"
+              class="rounded-sm border-black border text-2xl font-bold cursor-pointer h-14 w-28 shadow shadow-black"
+            >
+              About
+            </button>
+          </div>
+        </div>
+      </div>
       <button
         type="button"
-        id="settings-desktop"
+        id="settings-button-desktop"
         class="hidden lg:flex items-center gap-2 fixed bottom-4 right-4 text-xl select-none"
       >
         Settings
@@ -500,9 +612,9 @@
 
       <div
         id="menu-mobile"
-        class="lg:hidden bg-white h-full w-full xs:w-60 sm:w-80 fixed top-0 right-0 translate-x-full transition-transform z-20 xs:border-l-2 border-black"
+        class="lg:hidden bg-white h-full w-full xs:w-60 sm:w-80 fixed top-0 right-0 transition-transform z-20 xs:border-l-2 border-black"
       >
-        <div class="relative w-full h-full border">
+        <div class="relative w-full h-full border flex flex-col pt-9">
           <button id="close-menu-mobile" class="absolute top-2 left-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -515,6 +627,59 @@
               />
             </svg>
           </button>
+          <div class="flex flex-col items-center gap-4 p-2 select-none">
+            <div
+              id="language-holder"
+              class="text-3xl border-2 border-black p-3"
+            >
+              Language
+            </div>
+            <select
+              id="language-selection-desktop"
+              class="text-2xl p-2 bg-none border-black border"
+            >
+              <option value="en" selected>English</option>
+              <option value="tr">Türkçe</option>
+              <option value="ru">русский</option>
+              <option value="de">Deutsch</option>
+            </select>
+            <div class="flex flex-col gap-4">
+              <span class="border-b-2 border-black text-4xl text-center"
+                >Unit</span
+              >
+              <div class="text-3xl">
+                <button>°C</button> | <button>°F</button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-col gap-4 h-full w-full justify-between mb-2 mt-2 sm:justify-start"
+          >
+            <button
+              type="button"
+              class="rounded-sm border-black border text-2xl cursor-pointer shadow shadow-black h-14 ml-4 mr-4"
+            >
+              Today
+            </button>
+            <button
+              type="button"
+              class="rounded-sm border-black border text-2xl cursor-pointer shadow shadow-black h-14 ml-4 mr-4"
+            >
+              Today
+            </button>
+            <button
+              type="button"
+              class="rounded-sm border-black border text-2xl cursor-pointer shadow shadow-black h-14 ml-4 mr-4"
+            >
+              Today
+            </button>
+            <button
+              type="button"
+              class="rounded-sm border-black border text-2xl font-bold cursor-pointer shadow shadow-black h-14 ml-4 mr-4"
+            >
+              About
+            </button>
+          </div>
         </div>
       </div>
       <div
@@ -551,7 +716,7 @@
           </svg>
         </div>
         <div
-          id="settings-mobile"
+          id="settings-button-mobile"
           class="w-12 h-12 flex items-center justify-center rounded-lg border border-black shadow shadow-black active:scale-90 transition-transform"
         >
           <svg
