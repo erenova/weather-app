@@ -5,3 +5,4 @@ import "./modules/API/handleApi";
 import "./modules/Interface/generalUI";
 import "./modules/Interface/desktopUI";
 import "./modules/Interface/mobileUI";
+import "./modules/function/searchForm";

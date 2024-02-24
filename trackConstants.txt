@@ -1,0 +1,5 @@
+modal-dark
+expand-modal - is a dynamic modal for detailed weather info. When user want to get info, user clicks to it. it pops up.
+
+menu-desktop - is desktop settings menu, when opened `invisible` class disabled and when closed vice versa.
+menu-mobile - same thing for mobile viewport.

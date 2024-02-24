@@ -2,7 +2,7 @@ import * as ui from "./modalDark";
 
 const mobileMenu = document.getElementById("menu-mobile");
 const closeMenuButton = document.getElementById("close-menu-mobile");
-const settingsButton = document.getElementById("settings-button-mobile");
+const settingsButton = document.getElementById("settings-nav-mobile");
 const searchMenuMobile = document.getElementById("search-menu-mobile");
 const searchNavMobile = document.getElementById("search-nav-mobile");
 const { modalDark } = ui;
@@ -55,4 +55,4 @@ searchNavMobile.addEventListener("click", activateSearchMenu);
 /* close search menu */
 modalDark.addEventListener("click", deactivateSearchMenu);
 
-export { activateMobileMenu, deactivateMobileMenu };
+export { activateMobileMenu, deactivateMobileMenu, deactivateSearchMenu };
