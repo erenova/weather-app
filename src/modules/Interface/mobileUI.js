@@ -5,6 +5,7 @@ const closeMenuButton = document.getElementById("close-menu-mobile");
 const settingsButton = document.getElementById("settings-nav-mobile");
 const searchMenuMobile = document.getElementById("search-menu-mobile");
 const searchNavMobile = document.getElementById("search-nav-mobile");
+const searchInputMobile = document.getElementById("search-input-mobile");
 const { modalDark } = ui;
 
 function showMobileMenu() {
@@ -36,11 +37,13 @@ function hideSearchMenu() {
 function activateSearchMenu() {
   showSearchMenu();
   ui.activateModalDark();
+  searchInputMobile.focus();
 }
 
 function deactivateSearchMenu() {
   hideSearchMenu();
   ui.deactivateModalDark();
+  searchInputMobile.blur();
 }
 
 /* On click to mobile nav, activate mobileMenu */

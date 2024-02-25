@@ -1,18 +1,44 @@
 import findSvg from "../Icon/handleWeatherIcon";
+// eslint-disable-next-line import/no-cycle
+import { setNewTimeZone } from "../function/clock";
 import * as ui from "./modalDark";
 
 const { modalDark } = ui;
-const expandModal = document.getElementById("expand-modal");
 const pageLoading = document.getElementById("page-loading");
 
 /* Dynamic UI items */
+/* Current section */
 const currentHeat = document.getElementById("current-heat");
 const currentCondition = document.getElementById("current-condition");
 const currentIcon = document.getElementById("current-icon");
-const currentTime = document.getElementById("current-time");
+const currentHour = document.getElementById("current-hour");
+const currentSecond = document.getElementById("current-second");
 const currentFeelsLike = document.getElementById("feels-like-degree");
 const cityName = document.getElementById("city-name");
 const countryName = document.getElementById("country-name");
+
+/* On modal click section */
+const expandModal = document.getElementById("expand-modal");
+function getModalElements(attribute) {
+  return document.querySelector(`[data-active-modal="${attribute}"]`);
+}
+
+function setActiveModalElements({
+  hourElement,
+  cloudElement,
+  humidityElement,
+  windElement,
+  iconElement,
+  conditionElement,
+}) {
+  getModalElements("hour").innerText = hourElement;
+  getModalElements("cloud").innerText = cloudElement;
+  getModalElements("humidity").innerText = humidityElement;
+  getModalElements("wind").innerText = windElement;
+  getModalElements("icon").innerHTML = iconElement;
+  getModalElements("condition").innerText = conditionElement;
+}
+
 /* Icon */
 
 function deactivateInfoModal() {
@@ -28,8 +54,9 @@ function setCurrentCondition(value) {
 function setCurrentIcon(iconCode, isDay) {
   currentIcon.innerHTML = findSvg(iconCode, isDay);
 }
-function setCurrentTime(value) {
-  currentTime.innerText = value;
+function setCurrentTime(hour, second) {
+  currentHour.innerText = hour;
+  currentSecond.innerText = second;
 }
 function setCurrentFeelsLike(value) {
   currentFeelsLike.innerText = value;
@@ -49,7 +76,9 @@ function setCurrentAll({
   feelsLike,
   city,
   country,
+  newTimeZone,
 }) {
+  setNewTimeZone(newTimeZone);
   setCurrentHeat(heat);
   setCurrentCondition(condition);
   setCurrentIcon(iconCode, isDay);
@@ -58,8 +87,11 @@ function setCurrentAll({
   setCountryName(country);
 }
 /* Loading Effect */
-function loadingEffect() {
-  const randomizedLoadDuration = Math.floor(Math.random() + 1) * 1000;
+function loadingEffect(onStart) {
+  let randomizedLoadDuration = Math.floor(Math.random() * 500) + 1000;
+  if (onStart) {
+    randomizedLoadDuration = 1000;
+  }
   pageLoading.classList.remove("invisible");
   setTimeout(() => {
     pageLoading.classList.add("invisible");
@@ -68,5 +100,4 @@ function loadingEffect() {
 }
 
 modalDark.addEventListener("click", deactivateInfoModal);
-
-export { setCurrentAll, setCurrentTime, loadingEffect };
+export { setCurrentAll, setCurrentTime, loadingEffect, setActiveModalElements };

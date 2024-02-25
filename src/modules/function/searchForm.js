@@ -20,18 +20,30 @@ function inputCheckup(inputElement) {
   }
   return false;
 }
+function clearDotsFromTemp(input) {
+  const currentHeat = input.toLocaleString();
+  const heatDotIndex = currentHeat.indexOf(".");
+  if (heatDotIndex !== -1) {
+    return currentHeat.slice(0, heatDotIndex);
+  }
+  return currentHeat;
+}
 
-async function setSearchResult(inputCity) {
+export default async function setSearchResult(inputCity) {
   const result = await searchCity(inputCity);
+  const currentHeat = clearDotsFromTemp(result.currentTemp.celsius);
+  const feelsLikeHeat = clearDotsFromTemp(result.feelsLike.celsius);
+
   console.log(result);
   setCurrentAll({
-    heat: result.currentTemp.celsius,
+    heat: currentHeat,
     condition: result.weatherContent.text,
     iconCode: result.weatherContent.code,
     isDay: result.weatherContent.isDay,
-    feelsLike: result.feelsLike.celsius,
+    feelsLike: feelsLikeHeat,
     city: result.naming.cityName,
     country: result.naming.countryName,
+    newTimeZone: result.misc.timezone,
   });
 }
 
@@ -42,20 +54,17 @@ function formSubmitted(submitEvent) {
       submitEvent.target === desktopSearchButton) &&
     inputCheckup(desktopInput)
   ) {
-    const loadDuration = loadingEffect();
-    setTimeout(() => {
-      setSearchResult(desktopInput.value);
-    }, loadDuration);
+    loadingEffect();
+    setSearchResult(desktopInput.value);
   } else if (
     (submitEvent.target === mobileForm ||
       submitEvent.target === mobileSearchButton) &&
     inputCheckup(mobileInput)
   ) {
-    const loadDuration = loadingEffect();
+    loadingEffect();
     deactivateSearchMenu();
-    setTimeout(() => {
-      setSearchResult(mobileInput.value);
-    }, loadDuration);
+    setSearchResult(mobileInput.value);
+    mobileInput.value = "";
   } else {
     Error("şimdilik error returnluyorum");
   }
