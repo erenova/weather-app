@@ -1,5 +1,5 @@
 const weatherIcon = {
-  clear: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-10 drop-shadow">
+  clear: `<svg class="drop-shadow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" >
   <path
     d="M160 136c0-30.62 4.51-61.61 16-88C99.57 81.27 48 159.32 48 248c0 119.29 96.71 216 216 216 88.68 0 166.73-51.57 200-128-26.39 11.49-57.38 16-88 16-119.29 0-216-96.71-216-216z"
     fill="none"
@@ -10,22 +10,22 @@ const weatherIcon = {
   />
 </svg>
 `,
-  cloudy: `<svg
+  cloudy: `<svg class="drop-shadow"
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 24 24"
   fill="#cbd5e1"
-  width="200"
-  height="200"
+  
+  
 >
   <path
     d="M6,19A5,5 0 0,1 1,14A5,5 0 0,1 6,9C7,6.65 9.3,5 12,5C15.43,5 18.24,7.66 18.5,11.03L19,11A4,4 0 0,1 23,15A4,4 0 0,1 19,19H6M19,13H17V12A5,5 0 0,0 12,7C9.5,7 7.45,8.82 7.06,11.19C6.73,11.07 6.37,11 6,11A3,3 0 0,0 3,14A3,3 0 0,0 6,17H19A2,2 0 0,0 21,15A2,2 0 0,0 19,13Z"
   />
 </svg>
 `,
-  sunny: `<svg
+  sunny: `<svg class="drop-shadow"
   xmlns="http://www.w3.org/2000/svg"
-  width="200"
-  height="200"
+  
+  
   viewBox="0 0 24 24"
   fill="none"
   stroke="#eab308"
@@ -44,7 +44,7 @@ const weatherIcon = {
   <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
 </svg>
 `,
-  snowy: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  snowy: `<svg class="drop-shadow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <!-- Path for the cloud -->
   <path
     d="M6,14A1,1 0 0,1 7,15A1,1 0 0,1 6,16A5,5 0 0,1 1,11A5,5 0 0,1 6,6C7,3.65 9.3,2 12,2C15.43,2 18.24,4.66 18.5,8.03L19,8A4,4 0 0,1 23,12A4,4 0 0,1 19,16H18A1,1 0 0,1 17,15A1,1 0 0,1 18,14H19A2,2 0 0,0 21,12A2,2 0 0,0 19,10H17V9A5,5 0 0,0 12,4C9.5,4 7.45,5.82 7.06,8.19C6.73,8.07 6.37,8 6,8A3,3 0 0,0 3,11A3,3 0 0,0 6,14"
@@ -57,11 +57,11 @@ const weatherIcon = {
   />
 </svg>
 `,
-  snowyRainy: `<svg
+  snowyRainy: `<svg class="drop-shadow"
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 24 24"
-  width="200"
-  height="200"
+  
+  
 >
   <path
     d="M 18.5 18.67 m -17.5 -7.67 A 5 5 0 0 1 6 6 C 7 3.65 9.3 2 12 2 C 15.43 2 18.24 4.66 18.5 8.03 L 19 8 A 4 4 0 0 1 23 12 A 4 4 0 0 1 19 16 A 1 1 0 0 1 18 15 A 1 1 0 0 1 19 14 A 2 2 0 0 0 21 12 A 2 2 0 0 0 19 10 H 17 V 9 A 5 5 0 0 0 12 4 C 9.5 4 7.45 5.82 7.06 8.19 C 6.73 8.07 6.37 8 6 8 A 3 3 0 0 0 3 11 C 3 11.85 3.35 12.61 3.91 13.16 C 4.27 13.55 4.26 14.16 3.88 14.54 C 3.5 14.93 2.85 14.93 2.47 14.54 C 1.56 13.63 1 12.38 1 11"
@@ -77,11 +77,11 @@ const weatherIcon = {
   />
 </svg>
 `,
-  partlyCloudyNight: `<svg
+  partlyCloudyNight: `<svg class="drop-shadow"
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 512 512"
-  width="200"
-  height="200"
+  
+  
 >
   <path
     d="M388.31 272c47.75 0 89.77-27.77 107.69-68.92-14.21 6.18-30.9 8.61-47.38 8.61A116.31 116.31 0 01332.31 95.38c0-16.48 2.43-33.17 8.61-47.38C299.77 65.92 272 107.94 272 155.69a116.31 116.31 0 003.44 28.18"
@@ -100,11 +100,11 @@ const weatherIcon = {
   />
 </svg>
 `,
-  partlyCloudyDay: `<svg
+  partlyCloudyDay: `<svg class="drop-shadow"
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 512 512"
-  width="200"
-  height="200"
+  
+  
 >
   <path
     d="M384.8 271.4a80 80 0 10-123.55-92M464 208h32M336 48v32M222.86 94.86l22.63 22.63M449.14 94.86l-22.63 22.63"
@@ -123,11 +123,11 @@ const weatherIcon = {
   />
 </svg>
 `,
-  foggy: `<svg
+  foggy: `<svg class="drop-shadow"
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 24 24"
-  width="200"
-  height="200"
+  
+  
 >
   <path
     d="M3,15H13A1,1 0 0,1 14,16A1,1 0 0,1 13,17H3A1,1 0 0,1 2,16A1,1 0 0,1 3,15M16,15H21A1,1 0 0,1 22,16A1,1 0 0,1 21,17H16A1,1 0 0,1 15,16A1,1 0 0,1 16,15M1,12A5,5 0 0,1 6,7C7,4.65 9.3,3 12,3C15.43,3 18.24,5.66 18.5,9.03L19,9C21.19,9 22.97,10.76 23,13H21A2,2 0 0,0 19,11H17V10A5,5 0 0,0 12,5C9.5,5 7.45,6.82 7.06,9.19C6.73,9.07 6.37,9 6,9A3,3 0 0,0 3,12C3,12.35 3.06,12.69 3.17,13H1.1L1,12M3,19H5A1,1 0 0,1 6,20A1,1 0 0,1 5,21H3A1,1 0 0,1 2,20A1,1 0 0,1 3,19M8,19H21A1,1 0 0,1 22,20A1,1 0 0,1 21,21H8A1,1 0 0,1 7,20A1,1 0 0,1 8,19Z"
@@ -135,11 +135,11 @@ const weatherIcon = {
   />
 </svg>
 `,
-  rainy: `<svg
+  rainy: `<svg class="drop-shadow"
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 512 512"
-  width="200"
-  height="200"
+  
+  
 >
   <path
     d="M114.61 162.85A16.07 16.07 0 00128 149.6C140.09 76.17 193.63 32 256 32c57.93 0 96.62 37.75 112.2 77.74a15.84 15.84 0 0012.2 9.87c50 8.15 91.6 41.54 91.6 99.59 0 59.4-48.6 100.8-108 100.8H130c-49.5 0-90-24.7-90-79.2 0-48.47 38.67-72.22 74.61-77.95z"
@@ -157,11 +157,11 @@ const weatherIcon = {
   />
 </svg>
 `,
-  rainyLightning: `<svg
+  rainyLightning: `<svg class="drop-shadow"
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 512 512"
-  width="200"
-  height="200"
+  
+  
 >
   <path
     fill="none"
@@ -189,11 +189,11 @@ const weatherIcon = {
   />
 </svg>
 `,
-  heavySnow: `<svg
+  heavySnow: `<svg class="drop-shadow"
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 24 24"
-  width="200"
-  height="200"
+  
+  
 >
   <path
     d="M 4 16.36 m -3 -6.36 A 5 5 0 0 1 6 5 C 7 2.65 9.3 1 12 1 C 15.43 1 18.24 3.66 18.5 7.03 L 19 7 A 4 4 0 0 1 23 11 A 4 4 0 0 1 19 15 A 1 1 0 0 1 18 14 A 1 1 0 0 1 19 13 A 2 2 0 0 0 21 11 A 2 2 0 0 0 19 9 H 17 V 8 A 5 5 0 0 0 12 3 C 9.5 3 7.45 4.82 7.06 7.19 C 6.73 7.07 6.37 7 6 7 A 3 3 0 0 0 3 10 C 3 10.85 3.35 11.61 3.91 12.16 C 4.27 12.55 4.26 13.16 3.88 13.54 C 3.5 13.93 2.85 13.93 2.47 13.54 C 1.56 12.63 1 11.38 1 10 z"
@@ -206,3 +206,75 @@ const weatherIcon = {
 </svg>
 `,
 };
+
+export default function findSvg(iconCode, isDay) {
+  if (!isDay) {
+    if (iconCode === 1000) {
+      return weatherIcon.clear;
+    }
+    if (iconCode === 1003 || iconCode === 1006) {
+      return weatherIcon.partlyCloudyNight;
+    }
+  }
+
+  switch (iconCode) {
+    case 1087:
+    case 1273:
+    case 1276:
+      return weatherIcon.rainyLightning;
+    case 1114:
+    case 1117:
+    case 1222:
+    case 1225:
+    case 1237:
+    case 1264:
+    case 1279:
+    case 1282:
+      return weatherIcon.heavySnow;
+    case 1210:
+    case 1213:
+    case 1216:
+    case 1219:
+    case 1255:
+    case 1258:
+    case 1261:
+      return weatherIcon.snowy;
+    case 1000:
+      return weatherIcon.sunny;
+    case 1006:
+    case 1009:
+      return weatherIcon.cloudy;
+    case 1003:
+      return weatherIcon.partlyCloudyDay;
+    case 1069:
+    case 1204:
+    case 1207:
+    case 1249:
+    case 1252:
+      return weatherIcon.snowyRainy;
+    case 1030:
+    case 1135:
+    case 1147:
+      return weatherIcon.foggy;
+    case 1072:
+    case 1063:
+    case 1150:
+    case 1153:
+    case 1168:
+    case 1180:
+    case 1183:
+    case 1186:
+    case 1189:
+    case 1192:
+    case 1195:
+    case 1198:
+    case 1201:
+    case 1240:
+    case 1243:
+    case 1246:
+    case 1171:
+      return weatherIcon.rainy;
+    default:
+      return null;
+  }
+}

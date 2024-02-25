@@ -40,9 +40,11 @@
                 Bulutlu
               </div>
             </div>
-            <div id="current-icon" class="place-self-center xs:place-self-auto">
+            <div
+              id="current-icon"
+              class="place-self-center xs:place-self-auto w-20 xs:w-16 lg:min-w-16 drop-shadow"
+            >
               <svg
-                class="w-20 xs:w-16 lg:min-w-16 drop-shadow"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="#cbd5e1"
@@ -67,7 +69,7 @@
               id="current-time"
               class="text-2xl xs:text-3xl justify-self-center xs:justify-self-end drop-shadow-[0_4px_1px_rgba(0,0,0,0.25)]"
             >
-              07:43
+              07:43:<span class="text-lg">20</span>
             </div>
             <div
               id="feels-like"
@@ -86,8 +88,8 @@
           id="current-info-city"
           class="grid select-none xs:mt-4 text-2xl md:text-3xl lg:row-start-2 lg:col-start-3 lg:col-end-5"
         >
-          <div id="city-name">
-            Istanbul
+          <div>
+            <span id="city-name">Istanbul</span>
             <span id="country-name" class="text-xl xs:self-end md:text-2xl">
               Turkey
             </span>
@@ -557,6 +559,7 @@
           <div
             id="language-holder"
             class="text-3xl border-2 border-black p-3 shadow shadow-black"
+            data-language-text="language"
           >
             Language
           </div>
@@ -564,7 +567,7 @@
             id="language-selection-desktop"
             class="text-2xl p-2 bg-none border-black border shadow shadow-black"
           >
-            <option value="en" selected>English</option>
+            <option value="en">English</option>
             <option value="tr">Türkçe</option>
             <option value="ru">русский</option>
             <option value="de">Deutsch</option>
@@ -704,6 +707,7 @@
             <div
               id="language-holder"
               class="text-3xl border-2 border-black p-3 shadow shadow-black"
+              data-language-text="language"
             >
               Language
             </div>
@@ -711,23 +715,22 @@
               id="language-selection-mobile"
               class="text-2xl p-2 bg-none border-black border shadow shadow-black"
             >
-              <option value="en" selected>English</option>
+              <option value="en">English</option>
               <option value="tr">Türkçe</option>
               <option value="ru">русский</option>
               <option value="de">Deutsch</option>
             </select>
 
-            <div class="flex items-center gap-3 text-center">
+            <div class="flex items-start gap-3 text-center">
               <div class="flex flex-col items-center">
                 <label
                   data-language-text="ambientSounds"
                   for="soundsMobile"
                   class="drop-shadow break-words w-[90px] text-2xl"
-                  >Ambient 
-                  sounds</label
+                  >Ambient sounds</label
                 >
                 <div
-                  class="form-check form-switch flex flex-col items-center text-center mr-7 "
+                  class="form-check form-switch flex flex-col items-center text-center mr-7"
                 >
                   <input
                     class="form-check-input"
@@ -741,7 +744,8 @@
                   >Unit</span
                 >
                 <div class="text-3xl drop-shadow">
-                  <button data-switch="celsius">°C</button> | <button data-switch="fahrenheit">°F</button>
+                  <button data-switch="celsius">°C</button> |
+                  <button data-switch="fahrenheit">°F</button>
                 </div>
               </div>
             </div>
@@ -867,10 +871,10 @@
       class="invisible absolute top-0 left-0 w-full h-full bg-neutral-900 opacity-50"
     >
       <div
-        class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 z-50"
+        class="absolute z-50 w-14 top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4"
       >
         <svg
-          class="animate-spin -ml-1 mr-3 h-14 absolute w-13 top-2/4 left-2/4"
+          class="animate-spin"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"

@@ -1,4 +1,5 @@
 import searchCity from "../API/handleApi";
+import { loadingEffect, setCurrentAll } from "../Interface/generalUI";
 import { deactivateSearchMenu } from "../Interface/mobileUI";
 
 const mobileForm = document.getElementById("search-form-mobile");
@@ -12,6 +13,7 @@ function inputCheckup(inputElement) {
   const checkValue = inputElement.value.trim();
 
   if (typeof checkValue === "string" && checkValue.length > 0) {
+    // eslint-disable-next-line no-param-reassign
     inputElement.value = checkValue;
 
     return true;
@@ -19,13 +21,41 @@ function inputCheckup(inputElement) {
   return false;
 }
 
+async function setSearchResult(inputCity) {
+  const result = await searchCity(inputCity);
+  console.log(result);
+  setCurrentAll({
+    heat: result.currentTemp.celsius,
+    condition: result.weatherContent.text,
+    iconCode: result.weatherContent.code,
+    isDay: result.weatherContent.isDay,
+    feelsLike: result.feelsLike.celsius,
+    city: result.naming.cityName,
+    country: result.naming.countryName,
+  });
+}
+
 function formSubmitted(submitEvent) {
   submitEvent.preventDefault();
-  if (submitEvent.target === desktopForm && inputCheckup(desktopInput)) {
-    searchCity(desktopInput.value);
-  } else if (submitEvent.target === mobileForm && inputCheckup(mobileInput)) {
-    searchCity(mobileInput.value);
+  if (
+    (submitEvent.target === desktopForm ||
+      submitEvent.target === desktopSearchButton) &&
+    inputCheckup(desktopInput)
+  ) {
+    const loadDuration = loadingEffect();
+    setTimeout(() => {
+      setSearchResult(desktopInput.value);
+    }, loadDuration);
+  } else if (
+    (submitEvent.target === mobileForm ||
+      submitEvent.target === mobileSearchButton) &&
+    inputCheckup(mobileInput)
+  ) {
+    const loadDuration = loadingEffect();
     deactivateSearchMenu();
+    setTimeout(() => {
+      setSearchResult(mobileInput.value);
+    }, loadDuration);
   } else {
     Error("şimdilik error returnluyorum");
   }
@@ -33,3 +63,6 @@ function formSubmitted(submitEvent) {
 
 desktopForm.addEventListener("submit", formSubmitted);
 mobileForm.addEventListener("submit", formSubmitted);
+
+desktopSearchButton.addEventListener("click", formSubmitted);
+mobileSearchButton.addEventListener("click", formSubmitted);
