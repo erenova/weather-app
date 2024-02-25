@@ -44,7 +44,7 @@ export default async function callWeatherApi(cityQuery) {
       temp_c: tempCelsius,
       temp_f: tempFahrenheit,
       humidity,
-      cloud: cloudRate,
+      cloud,
       wind_kph: wind,
       is_day: isDay,
     } = current;
@@ -77,12 +77,11 @@ export default async function callWeatherApi(cityQuery) {
       threeDayForecast,
       misc: {
         humidity,
-        cloudRate,
+        cloud,
         wind,
         timezone,
       },
     };
-    console.log(weatherData);
     return temperatureData;
   } catch (error) {
     console.log("callWeatherApi function has problem.");

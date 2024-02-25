@@ -1,6 +1,7 @@
 import findSvg from "../Icon/handleWeatherIcon";
 // eslint-disable-next-line import/no-cycle
 import { setNewTimeZone } from "../function/clock";
+import { getDataForCurrentModal } from "../function/trackLastSearch";
 import * as ui from "./modalDark";
 
 const { modalDark } = ui;
@@ -17,10 +18,18 @@ const currentFeelsLike = document.getElementById("feels-like-degree");
 const cityName = document.getElementById("city-name");
 const countryName = document.getElementById("country-name");
 
-/* On modal click section */
+/* On main modal click section */
 const expandModal = document.getElementById("expand-modal");
+const modalBoxMain = document.querySelector('[data-modal-box="main"]');
 function getModalElements(attribute) {
   return document.querySelector(`[data-active-modal="${attribute}"]`);
+}
+
+function activateInfoModal() {
+  expandModal.classList.remove(`invisible`);
+}
+function deactivateInfoModal() {
+  expandModal.classList.add(`invisible`);
 }
 
 function setActiveModalElements({
@@ -38,12 +47,13 @@ function setActiveModalElements({
   getModalElements("icon").innerHTML = iconElement;
   getModalElements("condition").innerText = conditionElement;
 }
-
-/* Icon */
-
-function deactivateInfoModal() {
-  expandModal.classList.add(`invisible`);
+function expandMainModalClick(event) {
+  activateInfoModal();
+  ui.activateModalDark();
+  setActiveModalElements(getDataForCurrentModal());
 }
+modalBoxMain.addEventListener("click", expandMainModalClick);
+/* Icon */
 
 function setCurrentHeat(value) {
   currentHeat.innerText = value;

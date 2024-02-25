@@ -2,11 +2,13 @@ import "./tailwind.css";
 import "./style.css";
 import "./additional.css";
 import "./modules/API/handleApi";
-import "./modules/Interface/desktopUI";
-import "./modules/Interface/mobileUI";
+import "./modules/interface/desktopUI";
+import "./modules/interface/mobileUI";
 import "./modules/function/clock";
+import "./modules/interface/weatherBlocks";
+import "./modules/interface/popup";
 import setSearchResult from "./modules/function/searchForm";
-import { loadingEffect } from "./modules/Interface/generalUI";
+import { loadingEffect } from "./modules/interface/generalUI";
 
 /* Start Page Result */
 loadingEffect(true);

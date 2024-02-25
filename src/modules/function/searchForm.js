@@ -1,6 +1,7 @@
 import searchCity from "../API/handleApi";
-import { loadingEffect, setCurrentAll } from "../Interface/generalUI";
-import { deactivateSearchMenu } from "../Interface/mobileUI";
+import { loadingEffect, setCurrentAll } from "../interface/generalUI";
+import { deactivateSearchMenu } from "../interface/mobileUI";
+import { setLastSearch } from "./trackLastSearch";
 
 const mobileForm = document.getElementById("search-form-mobile");
 const mobileInput = document.getElementById("search-input-mobile");
@@ -33,7 +34,7 @@ export default async function setSearchResult(inputCity) {
   const result = await searchCity(inputCity);
   const currentHeat = clearDotsFromTemp(result.currentTemp.celsius);
   const feelsLikeHeat = clearDotsFromTemp(result.feelsLike.celsius);
-
+  setLastSearch(result);
   console.log(result);
   setCurrentAll({
     heat: currentHeat,
@@ -49,6 +50,7 @@ export default async function setSearchResult(inputCity) {
 
 function formSubmitted(submitEvent) {
   submitEvent.preventDefault();
+
   if (
     (submitEvent.target === desktopForm ||
       submitEvent.target === desktopSearchButton) &&
@@ -56,6 +58,7 @@ function formSubmitted(submitEvent) {
   ) {
     loadingEffect();
     setSearchResult(desktopInput.value);
+    desktopInput.blur();
   } else if (
     (submitEvent.target === mobileForm ||
       submitEvent.target === mobileSearchButton) &&

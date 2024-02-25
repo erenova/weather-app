@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import { setCurrentTime } from "../Interface/generalUI";
+import { setCurrentTime } from "../interface/generalUI";
 
 /* eslint-disable prefer-const */
 const clockSettings = {
@@ -22,7 +22,11 @@ function activateClock(setCurrentTimeCallback) {
     setCurrentTimeCallback(currentHour, currentSecond);
   }, 1000);
 }
-
+function getCurrentHourOnly() {
+  return new Date()
+    .toLocaleString("tr", { timeZone: clockSettings.timeZone })
+    .slice(11, 13);
+}
 function deactivateClock() {
   clearInterval(clockSettings.intervalId);
 }
@@ -33,4 +37,4 @@ function setNewTimeZone(value) {
   activateClock(setCurrentTime);
 }
 
-export { setNewTimeZone, deactivateClock, activateClock };
+export { setNewTimeZone, deactivateClock, activateClock, getCurrentHourOnly };

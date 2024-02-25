@@ -22,11 +22,11 @@
         >
           <div
             id="today-weather"
-            class="grid grid-cols-2 xs:flex xs:items-center lg:justify-end lg:gap-8 xl:gap-16"
+            class="pointer-events-none grid grid-cols-2 xs:flex xs:items-center lg:justify-end lg:gap-8 xl:gap-16"
           >
             <div
               id="today-weather-info"
-              class="grid grid-cols-1 grid-rows-1 lg:grid-cols-2 lg:gap-x-2 xl:gap-8 2xl:gap-x-16"
+              class="pointer-events-none grid grid-cols-1 grid-rows-1 lg:grid-cols-2 lg:gap-x-2 xl:gap-8 2xl:gap-x-16"
             >
               <div class="text-3xl flex xs:items-center xs:justify-start">
                 <span id="current-heat">0</span
@@ -34,14 +34,14 @@
               </div>
               <span class="w-24 h-[3px] bg-black rounded-xl lg:hidden"></span>
               <div
-                class="text-3xl mt-1 xs:text-2xl sm:text-3xl"
+                class="text-3xl mt-1 xs:text-2xl sm:text-3xl max-w-32"
                 data-language
                 id="current-condition"
               ></div>
             </div>
             <div
               id="current-icon"
-              class="place-self-center xs:place-self-auto w-20 xs:w-16 lg:min-w-16 drop-shadow"
+              class="pointer-events-none place-self-center xs:place-self-auto w-20 xs:w-16 lg:min-w-16 drop-shadow"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +62,7 @@
           </div>
           <div
             id="timezone"
-            class="grid grid-cols-2 mt-2 xs:grid-cols-1 xs:mt-0 lg:grid-cols-2 items-center lg:justify-self-start lg:gap-x-16"
+            class="pointer-events-none grid grid-cols-2 mt-2 xs:grid-cols-1 xs:mt-0 lg:grid-cols-2 items-center lg:justify-self-start lg:gap-x-16"
           >
             <div
               id="current-time"
@@ -200,7 +200,7 @@
             </svg>
           </div>
           <div
-            class="col-start-1 col-end-3 lg:col-end-2 lg:row-start-1 lg:row-end-2 row-start-2 row-end-3"
+            class="col-start-1 col-end-3 lg:col-end-2 lg:row-start-1 lg:row-end-2 mb row-start-2 row-end-3 pb"
           >
             <span data-hour="8" class="drop-shadow">08:00</span>
           </div>
@@ -498,26 +498,30 @@
       <!--! Dynamic modal for detailed weaher info -->
       <div
         id="expand-modal"
-        class="fixed top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 w-full xs:w-[22rem] sm:w-96 lg:w-[450px] lg:h-[450px] h-96 bg-white z-30 rounded border-2 border-black select-none grid grid-cols-2"
+        class="invisible fixed top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 w-full xs:w-[22rem] sm:w-96 lg:w-[450px] lg:h-[450px] h-96 bg-white z-30 rounded border-2 border-black select-none grid grid-cols-2"
       >
         <div
           class="flex flex-col items-center mt-4 mb-4 ml-1 gap-8 lg:gap-16 text-center"
         >
-          <div class="text-2xl lg:text-4xl" data-active-modal="hour">10:00</div>
+          <div class="text-2xl lg:text-4xl">
+            <span data-active-modal="hour">10</span>:00
+          </div>
           <div class="text-2xl lg:text-3xl">
             <span data-language-text="cloud">Cloud</span>:
             <span data-active-modal="cloud">75</span>%
           </div>
           <div class="text-2xl lg:text-3xl">
             <span data-language-text="humidity">Humidity</span>:
-            <span data-active-modal="humidity">81%</span>
+            <span data-active-modal="humidity">81</span>%
           </div>
           <div class="text-2xl lg:text-3xl">
             <span data-language-text="wind">Wind</span>:
             <span data-active-modal="wind">18</span> km/h
           </div>
         </div>
-        <div class="grid grid-rows-2 place-items-center text-center">
+        <div
+          class="grid grid-rows-2 place-items-center text-center justify-center"
+        >
           <div id="expand-tab-icon" class="w-20 h-20" data-active-modal="icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
               <path
@@ -889,6 +893,22 @@
           ></path>
         </svg>
       </div>
+    </div>
+    <div
+      id="alert"
+      class="-translate-x-[120%] transition-transform fixed top-6 left-4 w-60 h-10 rounded-lg flex items-center bg-red-600 shadow shadow-black text-white p-4 font-bold"
+    >
+      <span class="drop-shadow" data-language-text="alert" data-alert="">
+        Failed!
+      </span>
+    </div>
+    <div
+      id="success"
+      class="-translate-x-[120%] transition-transform fixed top-6 left-4 w-60 h-10 rounded-lg flex items-center bg-green-600 shadow shadow-black text-white p-4 font-bold z-50"
+    >
+      <span class="" data-language-text="success" data-success="">
+        Successfully Changed!
+      </span>
     </div>
   </body>
 </html>
