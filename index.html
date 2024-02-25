@@ -16,6 +16,7 @@
         class="grid lg:grid-cols-6 lg:grid-rows-2 lg:gap-y-8"
       >
         <div
+          data-modal-box="main"
           id="current-info-temp"
           class="grid grid-rows-2 xs:grid-rows-1 xs:grid-cols-2 lg:gap-x-32 lg:border-b-2 lg:border-black lg:col-start-1 lg:col-end-7 select-none cursor-pointer"
         >
@@ -27,18 +28,16 @@
               id="today-weather-info"
               class="grid grid-cols-1 grid-rows-1 lg:grid-cols-2 lg:gap-x-2 xl:gap-8 2xl:gap-x-16"
             >
-              <div class="text-3xl flex xs:items-center xs:justify-center">
-                <span id="current-heat">12</span
+              <div class="text-3xl flex xs:items-center xs:justify-start">
+                <span id="current-heat">0</span
                 ><span data-temp-sign="°C">°C</span>
               </div>
               <span class="w-24 h-[3px] bg-black rounded-xl lg:hidden"></span>
               <div
-                class="text-2xl mt-1 xs:text-3xl"
+                class="text-3xl mt-1 xs:text-2xl sm:text-3xl"
                 data-language
                 id="current-condition"
-              >
-                Bulutlu
-              </div>
+              ></div>
             </div>
             <div
               id="current-icon"
@@ -69,7 +68,8 @@
               id="current-time"
               class="text-2xl xs:text-3xl justify-self-center xs:justify-self-end drop-shadow-[0_4px_1px_rgba(0,0,0,0.25)]"
             >
-              07:43:<span class="text-lg">20</span>
+              <span class="w-5" id="current-hour">00:00</span
+              ><span class="text-lg w-3" id="current-second">:00</span>
             </div>
             <div
               id="feels-like"
@@ -78,7 +78,7 @@
               <span id="feels-like-text" data-language-text="feelsLike"
                 >feels like:</span
               >
-              <span id="feels-like-degree">7</span
+              <span id="feels-like-degree">0</span
               ><span data-temp-sign="°C">°C</span>
             </div>
           </div>
@@ -498,32 +498,28 @@
       <!--! Dynamic modal for detailed weaher info -->
       <div
         id="expand-modal"
-        class="invisible fixed top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 w-full xs:w-[22rem] sm:w-96 lg:w-[450px] lg:h-[450px] h-96 bg-white z-30 rounded border-2 border-black select-none grid grid-cols-2"
+        class="fixed top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 w-full xs:w-[22rem] sm:w-96 lg:w-[450px] lg:h-[450px] h-96 bg-white z-30 rounded border-2 border-black select-none grid grid-cols-2"
       >
         <div
           class="flex flex-col items-center mt-4 mb-4 ml-1 gap-8 lg:gap-16 text-center"
         >
-          <div class="text-2xl lg:text-4xl">10:00</div>
+          <div class="text-2xl lg:text-4xl" data-active-modal="hour">10:00</div>
           <div class="text-2xl lg:text-3xl">
             <span data-language-text="cloud">Cloud</span>:
-            <span data-cloud>75%</span>
+            <span data-active-modal="cloud">75</span>%
           </div>
           <div class="text-2xl lg:text-3xl">
             <span data-language-text="humidity">Humidity</span>:
-            <span data-humidity>81%</span>
+            <span data-active-modal="humidity">81%</span>
           </div>
           <div class="text-2xl lg:text-3xl">
             <span data-language-text="wind">Wind</span>:
-            <span data-humidity>18</span> km/h
+            <span data-active-modal="wind">18</span> km/h
           </div>
         </div>
         <div class="grid grid-rows-2 place-items-center text-center">
-          <div id="expand-tab-icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-              class="w-20"
-            >
+          <div id="expand-tab-icon" class="w-20 h-20" data-active-modal="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
               <path
                 d="M384.8 271.4a80 80 0 10-123.55-92M464 208h32M336 48v32M222.86 94.86l22.63 22.63M449.14 94.86l-22.63 22.63"
                 fill="none"
@@ -543,7 +539,7 @@
           </div>
           <div
             class="text-3xl place-self-start lg:text-4xl"
-            data-condition-pop
+            data-active-modal="condition"
             data-language
           >
             Partly Cloudy
