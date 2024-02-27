@@ -51,7 +51,7 @@
 .form-switch .form-check-input:checked::after {
   top: 0;
   left: 18px;
-  background-color: #333;
+  background-color: #fff;
 }
 
 :root,

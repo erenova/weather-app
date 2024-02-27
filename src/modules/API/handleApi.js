@@ -1,3 +1,5 @@
+import { popAlert } from "../interface/popup";
+
 /* eslint-disable no-console */
 const API_KEY = `6325d8e01df64fdd83b53822240302`;
 const API_ADDITIONAL_FLAGS = `&aqi=no&lang=tr`;
@@ -14,6 +16,7 @@ export default async function callWeatherApi(cityQuery) {
       } else {
         console.log(`HTTP Error: ${response.status}`);
       }
+      popAlert("Please enter a valid city name.", true);
       return null; // Stop Process
     }
 
@@ -33,7 +36,7 @@ export default async function callWeatherApi(cityQuery) {
 
     /*
      * weatherData --> location */
-    const { country, name, region, tz_id: timezone } = location;
+    const { country, name, tz_id: timezone } = location;
 
     /*
      * weatherData --> current */
@@ -49,16 +52,19 @@ export default async function callWeatherApi(cityQuery) {
       is_day: isDay,
     } = current;
     //! current --> condition
-    const { icon, text, code } = condition;
+    const { text, code } = condition;
 
     /*
      * weatherData --> forecast */
-    const { forecastday: threeDayForecast } = forecast;
+    const forecastDays = {
+      today: forecast.forecastday[0],
+      tomorrow: forecast.forecastday[1],
+      other: forecast.forecastday[2],
+    };
     const temperatureData = {
       naming: {
         countryName: country,
         cityName: name,
-        region,
       },
       currentTemp: {
         celsius: tempCelsius,
@@ -68,13 +74,12 @@ export default async function callWeatherApi(cityQuery) {
         celsius: likeCelsius,
         fahrenheit: likeFahrenheit,
       },
+      forecastDays,
       weatherContent: {
-        icon,
         text,
         code,
         isDay,
       },
-      threeDayForecast,
       misc: {
         humidity,
         cloud,
@@ -82,6 +87,7 @@ export default async function callWeatherApi(cityQuery) {
         timezone,
       },
     };
+    console.log(temperatureData);
     return temperatureData;
   } catch (error) {
     console.log("callWeatherApi function has problem.");

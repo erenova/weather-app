@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import findSvg from "../Icon/handleWeatherIcon";
+import { findSvg } from "../Icon/handleWeatherIcon";
 import { getCurrentHourOnly } from "./clock";
 
 let lastSearch = {};
@@ -20,6 +20,18 @@ function getDataForCurrentModal() {
   };
 }
 
-function getDataForForecastModal() {}
+function getDataForForecastModal({ day, hour }) {
+  const days = lastSearch.forecastDays;
+  if (day === "today" && hour) {
+    return days.today.hour[hour];
+  }
+  if (day === "tomorrow" && hour) {
+    return days.tomorrow.hour[hour];
+  }
+  if (day === "other" && hour) {
+    return days.other.hour[hour];
+  }
+  return days[day].hour;
+}
 
 export { setLastSearch, getDataForCurrentModal, getDataForForecastModal };

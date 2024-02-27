@@ -5,11 +5,12 @@ import "./modules/API/handleApi";
 import "./modules/interface/desktopUI";
 import "./modules/interface/mobileUI";
 import "./modules/function/clock";
-import "./modules/interface/weatherBlocks";
+import "./modules/interface/weatherBox";
 import "./modules/interface/popup";
+import "./modules/interface/ambientSounds";
 import setSearchResult from "./modules/function/searchForm";
 import { loadingEffect } from "./modules/interface/generalUI";
-
+import "./modules/interface/theme";
 /* Start Page Result */
 loadingEffect(true);
-// setSearchResult("Istanbul");
+setSearchResult("Istanbul");

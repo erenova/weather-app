@@ -6,10 +6,8 @@ module.exports = {
     node: true,
   },
   parserOptions: {
-    ecmaVersion: 2020, // ECMAScript versiyonunu belirtir
+    ecmaVersion: 2020,
     sourceType: "module",
   },
-  rules: {
-    // Kişiselleştirilmiş ESLint kurallarınız buraya
-  },
+  rules: {},
 };

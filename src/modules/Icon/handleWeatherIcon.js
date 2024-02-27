@@ -1,4 +1,32 @@
 const weatherIcon = {
+  dark: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f7fafc" class="h-10 dark:fill-[#2d3748]">
+  <path
+    d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"
+  />
+</svg>
+`,
+  light: `<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  class="h-10"
+
+  fill="none"
+  stroke="#eab308"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="5"></circle>
+  <line x1="12" y1="1" x2="12" y2="3"></line>
+  <line x1="12" y1="21" x2="12" y2="23"></line>
+  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+  <line x1="1" y1="12" x2="3" y2="12"></line>
+  <line x1="21" y1="12" x2="23" y2="12"></line>
+  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+</svg>
+`,
   clear: `<svg class="drop-shadow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" >
   <path
     d="M160 136c0-30.62 4.51-61.61 16-88C99.57 81.27 48 159.32 48 248c0 119.29 96.71 216 216 216 88.68 0 166.73-51.57 200-128-26.39 11.49-57.38 16-88 16-119.29 0-216-96.71-216-216z"
@@ -193,7 +221,6 @@ const weatherIcon = {
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 24 24"
   
-  
 >
   <path
     d="M 4 16.36 m -3 -6.36 A 5 5 0 0 1 6 5 C 7 2.65 9.3 1 12 1 C 15.43 1 18.24 3.66 18.5 7.03 L 19 7 A 4 4 0 0 1 23 11 A 4 4 0 0 1 19 15 A 1 1 0 0 1 18 14 A 1 1 0 0 1 19 13 A 2 2 0 0 0 21 11 A 2 2 0 0 0 19 9 H 17 V 8 A 5 5 0 0 0 12 3 C 9.5 3 7.45 4.82 7.06 7.19 C 6.73 7.07 6.37 7 6 7 A 3 3 0 0 0 3 10 C 3 10.85 3.35 11.61 3.91 12.16 C 4.27 12.55 4.26 13.16 3.88 13.54 C 3.5 13.93 2.85 13.93 2.47 13.54 C 1.56 12.63 1 11.38 1 10 z"
@@ -207,7 +234,7 @@ const weatherIcon = {
 `,
 };
 
-export default function findSvg(iconCode, isDay) {
+export function findSvg(iconCode, isDay) {
   if (!isDay) {
     if (iconCode === 1000) {
       return weatherIcon.clear;
@@ -277,4 +304,10 @@ export default function findSvg(iconCode, isDay) {
     default:
       return null;
   }
+}
+
+export function getThemeIcon(theme) {
+  if (theme === "dark") return weatherIcon.dark;
+  if (theme === "light") return weatherIcon.light;
+  return undefined;
 }

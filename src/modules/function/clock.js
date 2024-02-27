@@ -22,11 +22,7 @@ function activateClock(setCurrentTimeCallback) {
     setCurrentTimeCallback(currentHour, currentSecond);
   }, 1000);
 }
-function getCurrentHourOnly() {
-  return new Date()
-    .toLocaleString("tr", { timeZone: clockSettings.timeZone })
-    .slice(11, 13);
-}
+
 function deactivateClock() {
   clearInterval(clockSettings.intervalId);
 }
@@ -35,6 +31,14 @@ function setNewTimeZone(value) {
   deactivateClock();
   clockSettings.timeZone = value;
   activateClock(setCurrentTime);
+}
+
+function getCurrentHourOnly(isNumber) {
+  let currentHour = new Date()
+    .toLocaleString("tr", { timeZone: clockSettings.timeZone })
+    .slice(11, 13);
+  if (isNumber) return Number(currentHour);
+  return currentHour;
 }
 
 export { setNewTimeZone, deactivateClock, activateClock, getCurrentHourOnly };

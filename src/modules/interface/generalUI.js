@@ -1,6 +1,5 @@
-import findSvg from "../Icon/handleWeatherIcon";
 // eslint-disable-next-line import/no-cycle
-import { setNewTimeZone } from "../function/clock";
+import { findSvg } from "../Icon/handleWeatherIcon";
 import { getDataForCurrentModal } from "../function/trackLastSearch";
 import * as ui from "./modalDark";
 
@@ -47,7 +46,7 @@ function setActiveModalElements({
   getModalElements("icon").innerHTML = iconElement;
   getModalElements("condition").innerText = conditionElement;
 }
-function expandMainModalClick(event) {
+function expandMainModalClick() {
   activateInfoModal();
   ui.activateModalDark();
   setActiveModalElements(getDataForCurrentModal());
@@ -86,9 +85,7 @@ function setCurrentAll({
   feelsLike,
   city,
   country,
-  newTimeZone,
 }) {
-  setNewTimeZone(newTimeZone);
   setCurrentHeat(heat);
   setCurrentCondition(condition);
   setCurrentIcon(iconCode, isDay);
