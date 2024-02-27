@@ -1,14 +1,14 @@
 function flyPopup() {
   document.querySelector("#notification-tab").childNodes.forEach((item) => {
     item.addEventListener("click", () => {
-      item.classList.add("-translate-x-[120%]");
+      item?.classList?.add("-translate-x-[120%]");
       setTimeout(() => {
         item.remove();
       }, 300);
     });
 
     setTimeout(() => {
-      item.classList.add("-translate-x-[120%]");
+      item?.classList?.add("-translate-x-[120%]");
       setTimeout(() => {
         item.remove();
       }, 300);

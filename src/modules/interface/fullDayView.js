@@ -2,6 +2,7 @@
 import { findSvg } from "../Icon/handleWeatherIcon";
 import { clearDotsFromTemp } from "../function/searchForm";
 import { getDataForForecastModal } from "../function/trackLastSearch";
+import { getActiveLanguage } from "../lang/language";
 import { expandForecastModalClick } from "./generalUI";
 import {
   clearAllBlocks,
@@ -20,6 +21,19 @@ const forecastTomorrowButtons = document.querySelectorAll(
 const forecastotherButtons = document.querySelectorAll(
   '[data-forecast="other"]',
 );
+const forecastotherDayText = document.querySelectorAll("[data-other-day]");
+function getAndAssingOtherDayName() {
+  const today = new Date();
+  const otherDay = new Date(today.setDate(today.getDate() + 2));
+
+  const DayName = otherDay.toLocaleDateString("en", {
+    weekday: "long",
+  });
+  forecastotherDayText.forEach((item) => {
+    item.innerText = DayName;
+  });
+}
+getAndAssingOtherDayName();
 /* elements */
 function hideForecastButtons() {
   document.querySelectorAll("[data-forecast]").forEach((element) => {

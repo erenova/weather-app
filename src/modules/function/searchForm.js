@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import searchCity from "../API/handleApi";
 import { loadingEffect, setCurrentAll } from "../interface/generalUI";
 import { deactivateSearchMenu } from "../interface/mobileUI";
@@ -34,6 +35,7 @@ function clearDotsFromTemp(input) {
 
 export default async function setSearchResult(inputCity) {
   const result = await searchCity(inputCity);
+  if (!result) return;
   const currentHeat = clearDotsFromTemp(result.currentTemp.celsius);
   const feelsLikeHeat = clearDotsFromTemp(result.feelsLike.celsius);
   setNewTimeZone(result.misc.timezone);

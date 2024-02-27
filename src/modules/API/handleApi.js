@@ -6,17 +6,17 @@ const API_ADDITIONAL_FLAGS = `&aqi=no&lang=tr`;
 const API_URL = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&days=3${API_ADDITIONAL_FLAGS}`;
 export default async function callWeatherApi(cityQuery) {
   try {
-    const response = await fetch(
-      `${API_URL}&q=${encodeURIComponent(cityQuery)}`,
-    );
-    if (!response.ok) {
+    const response =
+      (await fetch(`${API_URL}&q=${encodeURIComponent(cityQuery)}`)) ?? null;
+
+    if (!response?.ok) {
       // Handle fetch call
       if (response.status === 400) {
         console.log(`Bad Request: The request was unacceptable.`);
       } else {
         console.log(`HTTP Error: ${response.status}`);
       }
-      popAlert("Please enter a valid city name.", true);
+      popAlert("Please enter a valid city name.");
       return null; // Stop Process
     }
 
