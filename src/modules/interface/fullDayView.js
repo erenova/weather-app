@@ -4,6 +4,7 @@ import { clearDotsFromTemp } from "../function/searchForm";
 import { getDataForForecastModal } from "../function/trackLastSearch";
 import { getActiveLanguage } from "../lang/language";
 import { expandForecastModalClick } from "./generalUI";
+import { popAlert } from "./popup";
 import {
   clearAllBlocks,
   getActivePageView,
@@ -12,15 +13,7 @@ import {
 
 const hoursInfo = document.getElementById("hours-info");
 /* elements */
-const forecastTodayButtons = document.querySelectorAll(
-  '[data-forecast="today"]',
-);
-const forecastTomorrowButtons = document.querySelectorAll(
-  '[data-forecast="tomorrow"]',
-);
-const forecastotherButtons = document.querySelectorAll(
-  '[data-forecast="other"]',
-);
+
 const forecastotherDayText = document.querySelectorAll("[data-other-day]");
 function getAndAssingOtherDayName() {
   const today = new Date();

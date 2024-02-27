@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -138,10 +138,10 @@
         class="grid grid-cols-3 grid-rows-4 gap-y-8 lg:gap-x-4 lg:place-items-center md:text-xl select-none"
       >
         <button
-          data-forecast="today"
+          id="today-desktop"
           class="col-start-1 col-end-2 hidden lg:block row-start-4"
         >
-          <div data-language-text="viewForecast" class="">
+          <div data-language-text="viewForecast">
             Tam gün Hava tahminini görüntüle
           </div>
           <div class="font-bold drop-shadow" data-language-text="today">
@@ -149,7 +149,7 @@
           </div>
         </button>
         <button
-          data-forecast="tomorrow"
+          id="tomorrow-desktop"
           class="col-start-2 col-end-3 hidden lg:block row-start-4"
         >
           <div data-language-text="viewForecast">
@@ -164,11 +164,10 @@
         </button>
         <button
           data-forecast="other"
+          id="other-desktop"
           class="col-start-3 col-end-4 hidden lg:block row-start-4"
         >
-          <div class="" data-language-text="viewForecast">
-            View Full Day Forecast
-          </div>
+          <div data-language-text="viewForecast">View Full Day Forecast</div>
           <div class="text-amber-600 font-bold drop-shadow" data-other-day>
             Sunday
           </div>
@@ -446,9 +445,11 @@
             class="flex flex-col gap-4 h-full w-full justify-between mb-2 mt-2 sm:justify-start"
           >
             <button
+              id="today-mobile"
               type="button"
               class="rounded-sm border-black border text-2xl cursor-pointer shadow shadow-black h-14 ml-4 mr-4 font-bold"
               data-language-text="today"
+              data-forecast="today"
             >
               Today
             </button>
@@ -456,10 +457,12 @@
               type="button"
               class="rounded-sm border-black border text-2xl cursor-pointer shadow shadow-black h-14 ml-4 mr-4 text-blue-500 font-bold"
               data-language-text="tomorrow"
+              id="tomorrow-mobile"
             >
               Tomorrow
             </button>
             <button
+              id="other-mobile"
               type="button"
               class="rounded-sm border-black border text-2xl cursor-pointer shadow shadow-black h-14 ml-4 mr-4 text-amber-500 font-bold"
               data-other-day
