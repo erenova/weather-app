@@ -70,8 +70,6 @@ function createBlocks(amountOfBlocks) {
   let indexForBorder = 0;
   if (currentHour === 24) {
     todayForecast = getDataForForecastModal({ day: "tomorrow" });
-    currentHour = 0;
-    dayForecastIndex = 9;
   }
 
   for (currentHour; currentHour < dayForecastIndex; currentHour++) {
