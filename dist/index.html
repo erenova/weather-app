@@ -162,7 +162,7 @@
         </button>
         <button
           data-forecast
-          id="forecast-next-desktop"
+          id="forecast-other-desktop"
           class="col-start-3 col-end-4 hidden lg:block row-start-4"
         >
           <div class="" data-language-text="viewForecast">
@@ -287,7 +287,8 @@
               >Unit</span
             >
             <div class="text-3xl drop-shadow">
-              <button>°C</button> | <button>°F</button>
+              <button data-switch="celsius">°C</button> |
+              <button data-switch="fahrenheit">°F</button>
             </div>
           </div>
           <button
@@ -465,7 +466,7 @@
             </button>
             <button
               type="button"
-              id="forecast-next-mobile"
+              id="forecast-other-mobile"
               class="rounded-sm border-black border text-2xl cursor-pointer shadow shadow-black h-14 ml-4 mr-4 text-amber-500 font-bold"
               data-next-day
               data-language-text="data-next-day"

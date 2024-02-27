@@ -1,7 +1,7 @@
 import searchCity from "../API/handleApi";
 import { loadingEffect, setCurrentAll } from "../interface/generalUI";
 import { deactivateSearchMenu } from "../interface/mobileUI";
-import createBlocks from "../interface/weatherBox";
+import { createBlocks } from "../interface/weatherBox";
 import { setNewTimeZone } from "./clock";
 import { setLastSearch } from "./trackLastSearch";
 

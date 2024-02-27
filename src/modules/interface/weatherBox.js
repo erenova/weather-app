@@ -4,31 +4,35 @@ import { findSvg } from "../Icon/handleWeatherIcon";
 import { getCurrentHourOnly } from "../function/clock";
 import { clearDotsFromTemp } from "../function/searchForm";
 import { getDataForForecastModal } from "../function/trackLastSearch";
+import { expandForecastModalClick } from "./generalUI";
 import { popAlert } from "./popup";
 
 const hoursInfo = document.getElementById("hours-info");
-let activePageView = "default";
+let activePageView = "today";
 
 function getDataBoxes() {
   return document.querySelectorAll("[data-box]");
-}
-
-function hideForecastButtons() {
-  document.querySelectorAll("[data-forecast]").forEach((element) => {
-    element.classList.remove("lg:block");
-  });
 }
 function showForecastButtons() {
   document.querySelectorAll("[data-forecast]").forEach((element) => {
     element.classList.add("lg:block");
   });
 }
-function addPaddingForFullDay() {
-  document.getElementById("hours-info").classList.add("pb-20");
+function deactivateGoBackButton() {
+  document.getElementById("back-page-desktop").classList.add("invisible");
+  document.getElementById("back-page-mobile").classList.add("invisible");
 }
 function removePaddingFromView() {
   document.getElementById("hours-info").classList.remove("pb-20");
 }
+
+function getActivePageView() {
+  return activePageView;
+}
+function setActivePageView(value) {
+  activePageView = value;
+}
+
 // eslint-disable-next-line no-unused-vars
 function findBlockElement(index) {
   return document.querySelector(`[data-box="${index}"]`);
@@ -41,7 +45,7 @@ function clearAllBlocks() {
 }
 
 // eslint-disable-next-line consistent-return
-export default function createBlocks(amountOfBlocks) {
+function createBlocks(amountOfBlocks) {
   if (
     !(typeof amountOfBlocks === "number") ||
     amountOfBlocks <= 0 ||
@@ -49,7 +53,9 @@ export default function createBlocks(amountOfBlocks) {
   ) {
     return popAlert("Please Enter Valid Amount of Blocks");
   }
-
+  showForecastButtons();
+  deactivateGoBackButton();
+  removePaddingFromView();
   clearAllBlocks();
 
   let currentHour = getCurrentHourOnly(true);
@@ -75,10 +81,11 @@ export default function createBlocks(amountOfBlocks) {
       borderClass = `border-t-2 border-b-2`;
       indexForBorder++;
     }
+
     const blockElement = `<button
           type="button"
           data-box="${currentHour}"
-          class="${borderClass} border-[#2d3748] dark:border-white rounded-sm grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 shadow-sm active:shadow active:shadow-black shadow-black"
+          class="${borderClass} border-[#2d3748] dark:border-white rounded-sm grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 shadow-sm active:shadow active:shadow-black shadow-black lg:max-h-40 lg:w-[65%]"
         >
           <div class="drop-shadow">${clearDotsFromTemp(findCurrentHourObj.temp_c)}<span data-temp-sign="°C">°C</span></div>
           <div class="w-10 drop-shadow">
@@ -90,11 +97,28 @@ export default function createBlocks(amountOfBlocks) {
             <span class="drop-shadow">${findCurrentHourObj.time.slice(11)}</span>
           </div>
           <div class="hidden lg:block lg:text-center">
-            <span data-condition-text="7">Parçalı bulutlu</span>
+            <span data-condition-text>${findCurrentHourObj.condition.text}</span>
           </div>
         </button>`;
     hoursInfo.innerHTML += blockElement;
   }
+  document.querySelectorAll(`[data-box]`).forEach((element) => {
+    element.addEventListener("click", () => {
+      const forecastInfo = getDataForForecastModal({
+        day: "today",
+        hour: element.dataset.box,
+      });
+      console.log(forecastInfo);
+      expandForecastModalClick({
+        hourElement: forecastInfo.time.slice(11, 13),
+        cloudElement: forecastInfo.cloud,
+        humidityElement: forecastInfo.humidity,
+        windElement: forecastInfo.wind_kph,
+        iconElement: findSvg(forecastInfo.condition.code, forecastInfo.is_day),
+        conditionElement: forecastInfo.condition.text,
+      });
+    });
+  });
   if (differenceIndex < 0) {
     const tomorrowForecast = getDataForForecastModal({ day: "tomorrow" });
 
@@ -116,8 +140,8 @@ export default function createBlocks(amountOfBlocks) {
       const blockElement = `<button
           type="button"
           data-box="${activeHour}"
-          data-tomorrow
-          class="${borderClass} border-[#2d3748] dark:border-white rounded-sm grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 shadow-sm active:shadow active:shadow-black shadow-black"
+          data-tomorrow="${activeHour}"
+          class="${borderClass} border-[#2d3748] dark:border-white rounded-sm grid grid-cols-2 grid-rows-2 place-items-center lg:pr-5 lg:pl-5 lg:pt-1 lg:pb-1 shadow-sm active:shadow active:shadow-black shadow-black lg:max-h-40 lg:w-[65%]"
         >
           <div class="drop-shadow">${clearDotsFromTemp(findCurrentHourObj.temp_c)}<span data-temp-sign="°C">°C</span></div>
           <div class="w-10 drop-shadow">
@@ -129,10 +153,50 @@ export default function createBlocks(amountOfBlocks) {
             <span class="drop-shadow">${findCurrentHourObj.time.slice(11)}</span>
           </div>
           <div class="hidden lg:block lg:text-center">
-            <span data-condition-text="7">Parçalı bulutlu</span>
+            <span data-condition-text>${findCurrentHourObj.condition.text}</span>
           </div>
         </button>`;
       hoursInfo.innerHTML += blockElement;
+      document.querySelectorAll(`[data-tomorrow]`).forEach((element) => {
+        element.addEventListener("click", () => {
+          const forecastInfo = getDataForForecastModal({
+            day: "tomorrow",
+            hour: element.dataset.tomorrow,
+          });
+          expandForecastModalClick({
+            hourElement: forecastInfo.time.slice(11, 13),
+            cloudElement: forecastInfo.cloud,
+            humidityElement: forecastInfo.humidity,
+            windElement: forecastInfo.wind_kph,
+            iconElement: findSvg(
+              forecastInfo.condition.code,
+              forecastInfo.is_day,
+            ),
+            conditionElement: forecastInfo.condition.text,
+          });
+        });
+      });
     }
   }
+  document.querySelectorAll(`[data-box]`).forEach((boxElement) => {
+    let dayVal = "today";
+    if (Object.prototype.hasOwnProperty.call(boxElement.dataset, "tomorrow")) {
+      dayVal = "tomorrow";
+    }
+    boxElement.addEventListener("click", () => {
+      const forecastInfo = getDataForForecastModal({
+        day: dayVal,
+        hour: boxElement.dataset.box,
+      });
+      expandForecastModalClick({
+        hourElement: forecastInfo.time.slice(11, 13),
+        cloudElement: forecastInfo.cloud,
+        humidityElement: forecastInfo.humidity,
+        windElement: forecastInfo.wind_kph,
+        iconElement: findSvg(forecastInfo.condition.code, forecastInfo.is_day),
+        conditionElement: forecastInfo.condition.text,
+      });
+    });
+  });
 }
+export { createBlocks, setActivePageView, getActivePageView, clearAllBlocks };

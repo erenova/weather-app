@@ -52,6 +52,27 @@ function expandMainModalClick() {
   setActiveModalElements(getDataForCurrentModal());
 }
 modalBoxMain.addEventListener("click", expandMainModalClick);
+
+function expandForecastModalClick({
+  hourElement,
+  cloudElement,
+  humidityElement,
+  windElement,
+  iconElement,
+  conditionElement,
+}) {
+  activateInfoModal();
+  ui.activateModalDark();
+  setActiveModalElements({
+    hourElement,
+    cloudElement,
+    humidityElement,
+    windElement,
+    iconElement,
+    conditionElement,
+  });
+}
+
 /* Icon */
 
 function setCurrentHeat(value) {
@@ -107,4 +128,10 @@ function loadingEffect(onStart) {
 }
 
 modalDark.addEventListener("click", deactivateInfoModal);
-export { setCurrentAll, setCurrentTime, loadingEffect, setActiveModalElements };
+export {
+  setCurrentAll,
+  setCurrentTime,
+  loadingEffect,
+  setActiveModalElements,
+  expandForecastModalClick,
+};
