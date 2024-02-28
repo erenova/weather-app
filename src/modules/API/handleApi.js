@@ -4,7 +4,7 @@ import { popAlert } from "../interface/popup";
 const API_KEY = `6325d8e01df64fdd83b53822240302`;
 const API_ADDITIONAL_FLAGS = `&aqi=no&lang=tr`;
 const API_URL = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&days=3${API_ADDITIONAL_FLAGS}`;
-export default async function callWeatherApi(cityQuery) {
+export default async function callWeatherApi(cityQuery, isStart) {
   try {
     const response =
       (await fetch(`${API_URL}&q=${encodeURIComponent(cityQuery)}`)) ?? null;
@@ -36,8 +36,11 @@ export default async function callWeatherApi(cityQuery) {
 
     /*
      * weatherData --> location */
-    const { country, name, tz_id: timezone } = location;
+    let { country, name, region, tz_id: timezone } = location;
 
+    if (isStart) {
+      name = region;
+    }
     /*
      * weatherData --> current */
     const {

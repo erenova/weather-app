@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-cycle
+/* eslint-disable import/no-cycle */
 import { findSvg } from "../Icon/handleWeatherIcon";
 import { getDataForCurrentModal } from "../function/trackLastSearch";
 import * as ui from "./modalDark";

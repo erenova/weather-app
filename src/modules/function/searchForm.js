@@ -33,8 +33,8 @@ function clearDotsFromTemp(input) {
   return currentHeat;
 }
 
-export default async function setSearchResult(inputCity) {
-  const result = await searchCity(inputCity);
+export default async function setSearchResult(inputCity, isStart) {
+  const result = await searchCity(inputCity, isStart);
   if (!result) return;
   const currentHeat = clearDotsFromTemp(result.currentTemp.celsius);
   const feelsLikeHeat = clearDotsFromTemp(result.feelsLike.celsius);

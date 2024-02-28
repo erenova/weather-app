@@ -7,18 +7,15 @@ function getActiveLanguage() {
 }
 function setActiveLanguage(langShort) {
   activeLanguage = langShort;
+  localStorage.setItem("activeLanguage", langShort);
 }
 
 const langDesktop = document.getElementById("language-selection-desktop");
 const langMobile = document.getElementById("language-selection-mobile");
 
-function selectToDefault() {
-  langDesktop.selectedIndex = 0;
-  langMobile.selectedIndex = 0;
-}
-function changeLanguage() {
-  popAlert("The Feature Is Under Development");
-  selectToDefault();
+function selectToDefault() {}
+function changeLanguage(event) {
+  localStorage.setItem("activeLanguage", event.target.value);
 }
 
 langDesktop.addEventListener("change", changeLanguage);

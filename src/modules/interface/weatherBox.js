@@ -4,11 +4,17 @@ import { findSvg } from "../Icon/handleWeatherIcon";
 import { getCurrentHourOnly } from "../function/clock";
 import { clearDotsFromTemp } from "../function/searchForm";
 import { getDataForForecastModal } from "../function/trackLastSearch";
+import { addButtons, removeButtons } from "./fullDayView";
 import { expandForecastModalClick } from "./generalUI";
 import { popAlert } from "./popup";
 
 const hoursInfo = document.getElementById("hours-info");
 let activePageView = "today";
+
+const backDesktop = document.getElementById("back-page-desktop");
+const nextDesktop = document.getElementById("next-page-desktop");
+const backMobile = document.getElementById("back-page-mobile");
+const nextMobile = document.getElementById("next-page-mobile");
 
 function getDataBoxes() {
   return document.querySelectorAll("[data-box]");
@@ -18,10 +24,13 @@ function showForecastButtons() {
     element.classList.add("lg:block");
   });
 }
-function deactivateGoBackButton() {
-  document.getElementById("back-page-desktop").classList.add("invisible");
-  document.getElementById("back-page-mobile").classList.add("invisible");
+function deactivateArrowButtons() {
+  backDesktop.classList.add("invisible");
+  nextDesktop.classList.add("invisible");
+  backMobile.classList.add("hidden");
+  nextMobile.classList.add("hidden");
 }
+
 function removePaddingFromView() {
   document.getElementById("hours-info").classList.remove("pb-20");
 }
@@ -54,7 +63,7 @@ function createBlocks(amountOfBlocks) {
     return popAlert("Please Enter Valid Amount of Blocks");
   }
   showForecastButtons();
-  deactivateGoBackButton();
+  deactivateArrowButtons();
   removePaddingFromView();
   clearAllBlocks();
 
@@ -100,6 +109,7 @@ function createBlocks(amountOfBlocks) {
         </button>`;
     hoursInfo.innerHTML += blockElement;
   }
+  addButtons();
   document.querySelectorAll(`[data-box]`).forEach((element) => {
     element.addEventListener("click", () => {
       const forecastInfo = getDataForForecastModal({

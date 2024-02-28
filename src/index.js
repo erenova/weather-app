@@ -11,10 +11,9 @@ import "./modules/interface/popup";
 import "./modules/interface/ambientSounds";
 import "./modules/function/tempSign";
 import "./modules/interface/fullDayView";
-
+import "./modules/API/geoLocation";
 import setSearchResult from "./modules/function/searchForm";
 import { loadingEffect } from "./modules/interface/generalUI";
 import "./modules/interface/theme";
 /* Start Page Result */
 loadingEffect(true);
-setSearchResult("Istanbul");
