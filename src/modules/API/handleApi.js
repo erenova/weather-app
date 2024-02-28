@@ -1,13 +1,19 @@
 import { popAlert } from "../interface/popup";
+import { getActiveLanguage, getText } from "../lang/language";
 
 /* eslint-disable no-console */
-const API_KEY = `6325d8e01df64fdd83b53822240302`;
-const API_ADDITIONAL_FLAGS = `&aqi=no&lang=tr`;
-const API_URL = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&days=3${API_ADDITIONAL_FLAGS}`;
+
+function getURL() {
+  const API_KEY = `6325d8e01df64fdd83b53822240302`;
+  const API_ADDITIONAL_FLAGS = `&aqi=no&lang=${getActiveLanguage() || "en"}`;
+  const API_URL = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&days=3${API_ADDITIONAL_FLAGS}`;
+  return API_URL;
+}
+
 export default async function callWeatherApi(cityQuery, isStart) {
   try {
     const response =
-      (await fetch(`${API_URL}&q=${encodeURIComponent(cityQuery)}`)) ?? null;
+      (await fetch(`${getURL()}&q=${encodeURIComponent(cityQuery)}`)) ?? null;
 
     if (!response?.ok) {
       // Handle fetch call
@@ -16,7 +22,7 @@ export default async function callWeatherApi(cityQuery, isStart) {
       } else {
         console.log(`HTTP Error: ${response.status}`);
       }
-      popAlert("Please enter a valid city name.");
+      popAlert(`${getText(getActiveLanguage(), "validCity")}`);
       return null; // Stop Process
     }
 
@@ -27,7 +33,6 @@ export default async function callWeatherApi(cityQuery, isStart) {
       !weatherData.forecast
     ) {
       if (weatherData.error.code === 1006) {
-        console.log("Please Enter Valid City Name!");
       }
 
       return null;

@@ -19,7 +19,9 @@ function getDataForCurrentModal() {
     conditionElement: weatherContent.text,
   };
 }
-
+function getLastCityName() {
+  return lastSearch.location.name;
+}
 function getDataForForecastModal({ day, hour }) {
   const days = lastSearch.forecastDays;
   if (day === "today" && hour) {
@@ -34,4 +36,9 @@ function getDataForForecastModal({ day, hour }) {
   return days[day].hour;
 }
 
-export { setLastSearch, getDataForCurrentModal, getDataForForecastModal };
+export {
+  setLastSearch,
+  getDataForCurrentModal,
+  getDataForForecastModal,
+  getLastCityName,
+};

@@ -83,9 +83,8 @@
               class="text-xl md:text-2xl -order-1 xs:order-2 lg:-order-1 xs:justify-self-end lg:text-center"
             >
               <span id="feels-like-text" data-language-text="feelsLike"
-                >feels like:</span
-              >
-              <span id="feels-like-degree">0</span
+                >feels like</span
+              >: <span id="feels-like-degree">0</span
               ><span data-temp-sign="°C">°C</span>
             </div>
           </div>
@@ -239,12 +238,14 @@
         <div class="border-t-2 border-black grid grid-cols-2 grid-rows-2">
           <div
             class="text-4xl justify-self-center place-self-center drop-shadow"
+            data-language-text="theme"
           >
             Theme
           </div>
           <div class="justify-self-center flex flex-col gap-4">
             <span
               class="border-b-2 border-black text-4xl text-center dark:border-white"
+              data-language-text="unit"
               >Unit</span
             >
             <div class="text-3xl drop-shadow">
@@ -277,6 +278,7 @@
             <button
               type="button"
               class="rounded-sm border-black border text-2xl font-bold cursor-pointer h-14 w-28 shadow shadow-black"
+              data-language-text="about"
             >
               About
             </button>
@@ -288,7 +290,7 @@
         id="settings-button-desktop"
         class="hidden lg:flex items-center gap-2 fixed bottom-4 right-4 text-xl select-none"
       >
-        <span class="drop-shadow">Settings</span>
+        <span class="drop-shadow" data-language-text="settings">Settings</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -396,7 +398,9 @@
                 </div>
               </div>
               <div class="flex flex-col gap-4">
-                <span class="border-b-2 border-black text-4xl text-center"
+                <span
+                  class="border-b-2 border-black text-4xl text-center"
+                  data-language-text="unit"
                   >Unit</span
                 >
                 <div class="text-3xl drop-shadow">
@@ -441,6 +445,7 @@
             <button
               type="button"
               class="rounded-sm border-black border text-2xl font-bold cursor-pointer shadow shadow-black h-14 ml-4 mr-4"
+              data-language-text="about"
             >
               About
             </button>

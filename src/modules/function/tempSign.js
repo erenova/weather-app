@@ -1,9 +1,10 @@
 import { popAlert } from "../interface/popup";
+import { getActiveLanguage, getText } from "../lang/language";
 
 const tempSignButtons = document.querySelectorAll("[data-switch]");
 
 function temSignClicked() {
-  popAlert("This Feature Is Under Development.");
+  popAlert(getText(getActiveLanguage(), "underDevelopment"));
 }
 
 tempSignButtons.forEach((tempButton) => {

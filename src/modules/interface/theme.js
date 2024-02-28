@@ -1,4 +1,5 @@
 import { getThemeIcon } from "../Icon/handleWeatherIcon";
+import { getActiveLanguage, getText } from "../lang/language";
 import { popSuccess } from "./popup";
 
 const darkIcons = document.querySelectorAll("[data-dark-icon]");
@@ -20,7 +21,7 @@ function switchTheme(noAlert) {
     htmlClassList.remove("dark");
     setIcon(activeTheme);
     activeTheme = "light";
-    popSuccess("Light Theme Enabled");
+    popSuccess(`${getText(getActiveLanguage(), "lightThemeEnabled")} `);
     return "light";
   }
   if (activeTheme === "light") {
@@ -31,7 +32,7 @@ function switchTheme(noAlert) {
     if (noAlert === "noAlert") {
       return "dark";
     }
-    popSuccess("Dark Theme Enabled");
+    popSuccess(`${getText(getActiveLanguage(), "darkThemeEnabled")} `);
   }
 }
 

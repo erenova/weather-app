@@ -265,6 +265,7 @@ export function findSvg(iconCode, isDay) {
     case 1255:
     case 1258:
     case 1261:
+    case 1066:
       return weatherIcon.snowy;
     case 1000:
       return weatherIcon.sunny;

@@ -1,16 +1,25 @@
 {
+  "ambientSounds": "Ortam Sesleri",
+  "cloud": "Bulut",
+  "cityName": "Şehir ismi",
+  "dark": "Karanlık",
   "today": "Bugün",
   "tomorrow": "Yarın",
-  "days": {
-    "0": "Pazar",
-    "1": "Pazartesi",
-    "2": "Salı",
-    "3": "Çarşamba",
-    "4": "Perşembe",
-    "5": "Cuma",
-    "6": "Cumartesi"
-  },
   "language": "Dil",
   "settings": "Ayarlar",
-  "fullDayForecast": "Tam Gün tahminini görüntüle"
+  "viewForecast": "Tam Gün tahminini görüntüle",
+  "feelsLike": "hissedilen",
+  "humidity": "Nem",
+  "wind": "Rüzgar",
+  "theme": "Tema",
+  "unit": "Birim",
+  "goBack": "Geri Git",
+  "nextDay": "Sonraki Gün",
+  "about": "Hakkımda",
+  "validCity": "Lütfen Geçerli Bir Şehir İsmi Giriniz!",
+  "tr": "Türkçe",
+  "languageSwitch": "Geçiş yapılan Dil",
+  "underDevelopment": "Bu Özellik Geliştirme Aşamasında.",
+  "darkThemeEnabled": "Karanlık Tema Etkin",
+  "lightThemeEnabled": "Aydınlık Tema Etkin"
 }

@@ -4,10 +4,10 @@
 import { findSvg } from "../Icon/handleWeatherIcon";
 import { clearDotsFromTemp } from "../function/searchForm";
 import { getDataForForecastModal } from "../function/trackLastSearch";
-import { getActiveLanguage } from "../lang/language";
+import { getActiveLanguage, getText } from "../lang/language";
 import { expandForecastModalClick } from "./generalUI";
 import { deactivateMobileMenu } from "./mobileUI";
-import { popAlert, popSuccess } from "./popup";
+import { popSuccess } from "./popup";
 import {
   clearAllBlocks,
   createBlocks,
@@ -28,11 +28,20 @@ const backMobile = document.getElementById("back-page-mobile");
 const nextMobile = document.getElementById("next-page-mobile");
 
 const forecastotherDayText = document.querySelectorAll("[data-other-day]");
+function findOtherDayName(langCode) {
+  const today = new Date();
+  const otherDay = new Date(today.setDate(today.getDate() + 2));
+
+  const DayName = otherDay.toLocaleDateString(langCode, {
+    weekday: "long",
+  });
+  return DayName;
+}
 function getAndAssignOtherDayName(onlyPop) {
   const today = new Date();
   const otherDay = new Date(today.setDate(today.getDate() + 2));
 
-  const DayName = otherDay.toLocaleDateString("en", {
+  const DayName = otherDay.toLocaleDateString(getActiveLanguage(), {
     weekday: "long",
   });
   if (onlyPop) return DayName;
@@ -72,15 +81,15 @@ function clickOnNext() {
   const activeDay = getActivePageView();
   if (activeDay === "today") {
     createNewPage("tomorrow");
-    popSuccess("Tomorrow");
+    popSuccess(getText(getActiveLanguage(), "tomorrow"));
   }
   if (activeDay === "tomorrow") {
     createNewPage("other");
-    popSuccess(getAndAssignOtherDayName(true));
+    popSuccess(findOtherDayName(getActiveLanguage()));
   }
   if (activeDay === "other") {
     createNewPage("today");
-    popSuccess("today");
+    popSuccess(getText(getActiveLanguage(), "today"));
   }
 }
 nextDesktop.addEventListener("click", clickOnNext);
@@ -91,16 +100,17 @@ function addPaddingForFullDay() {
 }
 
 function addButtons() {
+  if (document.getElementById("today-desktop")) removeButtons();
   hoursInfo.innerHTML += `<button
           id="today-desktop"
           
           class="col-start-1 col-end-2 hidden lg:block row-start-1"
         >
           <div data-language-text="viewForecast">
-            Tam gün Hava tahminini görüntüle
+            ${getText(getActiveLanguage(), "viewForecast")}
           </div>
           <div class="font-bold drop-shadow" data-language-text="today">
-            Bugün
+            ${getText(getActiveLanguage(), "today")}
           </div>
         </button>
         <button
@@ -108,28 +118,30 @@ function addButtons() {
           class="col-start-2 col-end-3 hidden lg:block row-start-1"
         >
           <div data-language-text="viewForecast">
-            Tam gün Hava tahminini görüntüle
+                        ${getText(getActiveLanguage(), "viewForecast")}
+
           </div>
           <div
             class="text-blue-500 font-bold drop-shadow"
             data-language-text="tomorrow"
           >
-            Yarın
+            ${getText(getActiveLanguage(), "tomorrow")}
           </div>
         </button>
         <button
           id="other-desktop"
           class="col-start-3 col-end-4 hidden lg:block row-start-1"
         >
-          <div data-language-text="viewForecast">View Full Day Forecast</div>
+          <div data-language-text="viewForecast">  ${getText(getActiveLanguage(), "viewForecast")}</div>
           <div
             class="text-amber-600 font-bold drop-shadow"
             data-other-day
-            data-language-text="other-day"
           >
-            Sunday
+                        ${getAndAssignOtherDayName(true)}
+
           </div>
         </button>`;
+
   document.getElementById("today-desktop").addEventListener("click", todayPage);
   document
     .getElementById("tomorrow-desktop")
@@ -217,4 +229,4 @@ todayMobile.addEventListener("click", todayPage);
 tomorrowMobile.addEventListener("click", tomorrowPage);
 otherMobile.addEventListener("click", otherPage);
 
-export { addButtons, removeButtons };
+export { addButtons, removeButtons, getAndAssignOtherDayName };
