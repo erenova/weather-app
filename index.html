@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
+    <!-- <meta
       http-equiv="Content-Security-Policy"
       content="upgrade-insecure-requests"
-    />
+    /> -->
+
     <title>Weather-app</title>
   <script defer src="main.js"></script></head>
 
@@ -136,43 +137,7 @@
       <div
         id="hours-info"
         class="grid grid-cols-3 grid-rows-4 gap-y-8 lg:gap-x-4 lg:place-items-center md:text-xl select-none"
-      >
-        <button
-          id="today-desktop"
-          class="col-start-1 col-end-2 hidden lg:block row-start-4"
-        >
-          <div data-language-text="viewForecast">
-            Tam gün Hava tahminini görüntüle
-          </div>
-          <div class="font-bold drop-shadow" data-language-text="today">
-            Bugün
-          </div>
-        </button>
-        <button
-          id="tomorrow-desktop"
-          class="col-start-2 col-end-3 hidden lg:block row-start-4"
-        >
-          <div data-language-text="viewForecast">
-            Tam gün Hava tahminini görüntüle
-          </div>
-          <div
-            class="text-blue-500 font-bold drop-shadow"
-            data-language-text="tomorrow"
-          >
-            Yarın
-          </div>
-        </button>
-        <button
-          data-forecast="other"
-          id="other-desktop"
-          class="col-start-3 col-end-4 hidden lg:block row-start-4"
-        >
-          <div data-language-text="viewForecast">View Full Day Forecast</div>
-          <div class="text-amber-600 font-bold drop-shadow" data-other-day>
-            Sunday
-          </div>
-        </button>
-      </div>
+      ></div>
 
       <div
         id="modal-dark"
@@ -386,7 +351,7 @@
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
-              class="w-10"
+              class="w-10 dark:fill-white"
             >
               <title>Close Tab</title>
               <path
@@ -446,6 +411,7 @@
           >
             <button
               id="today-mobile"
+              data-today-button
               type="button"
               class="rounded-sm border-black border text-2xl cursor-pointer shadow shadow-black h-14 ml-4 mr-4 font-bold"
               data-language-text="today"
@@ -458,15 +424,17 @@
               class="rounded-sm border-black border text-2xl cursor-pointer shadow shadow-black h-14 ml-4 mr-4 text-blue-500 font-bold"
               data-language-text="tomorrow"
               id="tomorrow-mobile"
+              data-tomorrow-button
             >
               Tomorrow
             </button>
             <button
               id="other-mobile"
+              data-other-button
               type="button"
               class="rounded-sm border-black border text-2xl cursor-pointer shadow shadow-black h-14 ml-4 mr-4 text-amber-500 font-bold"
               data-other-day
-              data-language-text="data-next-day"
+              data-language-text="other-day"
             >
               Sunday
             </button>
@@ -487,8 +455,12 @@
           id="back-page-mobile"
           class="hidden w-12 h-12 rounded-lg border border-black shadow shadow-black active:scale-90 transition-transform"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <title>arrow-left-bold</title>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="drop-shadow dark:fill-white"
+          >
+            <title>Go Back</title>
             <path d="M20,9V15H12V19.84L4.16,12L12,4.16V9H20Z" />
           </svg>
         </div>
@@ -539,27 +511,58 @@
             />
           </svg>
         </div>
+        <div
+          id="next-page-mobile"
+          class="hidden w-12 h-12 rounded-lg border border-black shadow shadow-black active:scale-90 transition-transform"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="drop-shadow dark:fill-white"
+          >
+            <title>arrow-right-bold</title>
+            <path d="M4,15V9H12V4.16L19.84,12L12,19.84V15H4Z" />
+          </svg>
+        </div>
       </div>
     </div>
     <!-- Go back button, activated when full day view clicked -->
-    <div
+    <button
       id="back-page-desktop"
-      class="invisible hidden lg:flex absolute top-36 left-10 flex-col text-center"
+      class="invisible hidden lg:flex absolute top-36 left-10 flex-col items-center justify-center text-center"
     >
       <div
-        class="border-black border-2 rounded-lg bg-white flex items-center justify-center"
+        class="border-black dark:border-white border-2 rounded-lg dark:bg-none flex items-center justify-center"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          class="h-14"
+          class="h-14 dark:fill-white"
         >
-          <title>arrow-left-bold</title>
+          <title>Go Back</title>
           <path d="M20,9V15H12V19.84L4.16,12L12,4.16V9H20Z" />
         </svg>
       </div>
-      <span data-language-text="goBack">Go Back</span>
-    </div>
+      <span data-language-text="goBack" class="dark:text-white">Go Back</span>
+    </button>
+    <button
+      id="next-page-desktop"
+      class="invisible hidden lg:flex absolute top-36 right-10 flex-col items-center justify-center text-center"
+    >
+      <div
+        class="border-black dark:border-white border-2 rounded-lg dark:bg-none flex items-center justify-center"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          class="drop-shadow dark:fill-white h-14"
+        >
+          <title>Next Day</title>
+          <path d="M4,15V9H12V4.16L19.84,12L12,19.84V15H4Z" />
+        </svg>
+      </div>
+      <span data-language-text="nextDay" class="dark:text-white">Next Day</span>
+    </button>
     <div
       id="page-loading"
       class="invisible absolute top-0 left-0 w-full h-full bg-neutral-900 opacity-50"
