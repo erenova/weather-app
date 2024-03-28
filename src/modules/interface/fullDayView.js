@@ -142,11 +142,17 @@ function addButtons() {
           </div>
         </button>`;
 
-  document.getElementById("today-desktop").addEventListener("click", todayPage);
-  document
-    .getElementById("tomorrow-desktop")
-    .addEventListener("click", tomorrowPage);
-  document.getElementById("other-desktop").addEventListener("click", otherPage);
+  setTimeout(() => {
+    document
+      .getElementById("today-desktop")
+      .addEventListener("click", todayPage);
+    document
+      .getElementById("tomorrow-desktop")
+      .addEventListener("click", tomorrowPage);
+    document
+      .getElementById("other-desktop")
+      .addEventListener("click", otherPage);
+  }, 0);
 }
 
 function removeButtons() {
